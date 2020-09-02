@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public float timeBeforeRespawn = 1;
 
     //public getter-------------------------------------------------------------
     //singleton, we can access this game manager by this method
@@ -54,11 +53,12 @@ public class GameManager : MonoBehaviour
     //-----------------------------------------------------------------------------------------------------------------------
     //CHANGING SCENES
     //-----------------------------------------------------------------------------------------------------------------------
+    /*
     public void ChangeSceneWithDelay()
     {
         Invoke("GoToGameOverScene", timeBeforeRespawn);
     }
-    /*
+    
     private void RestartCurrentScene()
     {
         Debug.Log("RESTARTING CURRENT SCENE");

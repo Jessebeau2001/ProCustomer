@@ -5,7 +5,7 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
     public Transform theDestination; //the empty PickUpDestination object of a player to be able to pickUp objects
-    public static event Action OnHoldinPickup;
+    public static event Action OnHoldingPickup;
     public static event Action OnNoPickup;
     public float maxPickupDistance = 2;//pickupDestination x pickup
     public bool shouldItemShrink = true;//if an item should get smaller when picked up
@@ -34,7 +34,7 @@ public class PickUp : MonoBehaviour
                                            
             this.transform.parent = GameObject.Find("PickUpDestination").transform;//make this PickedUp object a child of the PickupDestination empty object
 
-            OnHoldinPickup?.Invoke();//Fireing this event -> PhysicsMovement > can not sprint anymore
+            OnHoldingPickup?.Invoke();//Fireing this event -> PhysicsMovement > can not sprint anymore
         }
     }
 

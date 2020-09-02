@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0c15d290be0a52847bc1bb5a8c20fc0d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -166,6 +166,9 @@ MonoBehaviour:
   sprintForce: 200
   jumpHeight: 5
   maxDistanceOfRay: 30
+  canJump: 1
+  sprintEnabled: 1
+  canSprintWithPickUp: 1
 --- !u!1 &8808025828489441830
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,7 +193,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8808025828489441830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.13, z: 1.12}
+  m_LocalPosition: {x: 0, y: 0.519, z: 1.185}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8808025828027717028}
@@ -223,7 +226,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8808025828623566694}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.831, z: 0.178}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8808025828027717028}
@@ -292,5 +295,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c20378a794f8d64781159e0c9e0f9c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 200
+  mouseSensitivity: 150
   playerBody: {fileID: 8808025828027717028}
