@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Net;
+﻿using System;
 using UnityEngine;
-using System;
 
 
 public class PickUp : MonoBehaviour
@@ -11,6 +8,7 @@ public class PickUp : MonoBehaviour
     public static event Action OnHoldinPickup;
     public static event Action OnNoPickup;
     public float maxPickupDistance = 2;//pickupDestination x pickup
+    public bool shouldItemShrink = true;//if an item should get smaller when picked up
 
     //--------------------------------------------------------------------------------------------
     // PICK UP object
@@ -29,7 +27,7 @@ public class PickUp : MonoBehaviour
             //to the position of the PickUpDestination (empty) object player has in front of it
             this.transform.position = theDestination.position;
 
-            if(this.gameObject.tag != "Box")//to prevent bug with bigger and bigger boxes
+            if(this.gameObject.tag != "Box" && shouldItemShrink == true)//to prevent bug with bigger and bigger boxes
             {
                 this.transform.localScale /= 2;//make the pickup smaller
             }
@@ -54,7 +52,7 @@ public class PickUp : MonoBehaviour
             //make the PickUp an independent object again, without a parent
             this.transform.parent = null;
 
-            if (this.gameObject.tag != "Box")
+            if (this.gameObject.tag != "Box" && shouldItemShrink == true)
             {
                 this.transform.localScale *= 2;//make the pickup the original size
             }

@@ -340,6 +340,11 @@ PrefabInstance:
       propertyPath: theDestination
       value: 
       objectReference: {fileID: 1382248517}
+    - target: {fileID: 1866358781263714228, guid: 5b79d7fbf76777d42ba90a65bc2c44db,
+        type: 3}
+      propertyPath: shouldItemShrink
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5876844532504713005, guid: 5b79d7fbf76777d42ba90a65bc2c44db,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -468,6 +473,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808025828623566698, guid: 65a29c53f7421594db481713ef67d13f,
+        type: 3}
+      propertyPath: mouseSensitivity
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65a29c53f7421594db481713ef67d13f, type: 3}
