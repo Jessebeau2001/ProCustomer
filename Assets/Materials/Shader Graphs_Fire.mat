@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Depth Outline
-  m_Shader: {fileID: -6465566751694194690, guid: df530e09b7579884ab0b175239d1fd17,
+  m_Name: Shader Graphs_Fire
+  m_Shader: {fileID: -6465566751694194690, guid: 186b883bab12bd24c9a1b49609935056,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -19,10 +19,13 @@ Material:
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - Texture2D_3584932B:
+        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_1115BB0C: 0
-    - Vector1_15CAAD49: 0
-    - Vector1_C0256BF1: 0
-    m_Colors: []
+    - Vector1_16D24F26: 0.1
+    m_Colors:
+    - Color_7E78FA08: {r: 3.468638, g: 1.064279, b: 0.1199839, a: 0}
   m_BuildTextureStacks: []

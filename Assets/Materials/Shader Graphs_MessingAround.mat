@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FresLine
-  m_Shader: {fileID: -6465566751694194690, guid: c45008dfd4778e9418b7a26eb286ac87,
+  m_Name: Shader Graphs_MessingAround
+  m_Shader: {fileID: -6465566751694194690, guid: cd002e617dfd439478a15beefe6db0a9,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -20,8 +20,7 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs: []
-    m_Floats:
-    - Vector1_A8D7CFAC: 0.5
-    - Vector1_BE1E653: 3
-    m_Colors: []
+    m_Floats: []
+    m_Colors:
+    - Vector3_367EE302: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
