@@ -8,8 +8,12 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject pauseMenu;//get the gameMenu obejct to be able to show/hide it
+    //FOR PAUSE MENU
+    private GameObject pauseMenu;//get the gameMenu obejct to be able to show/hide it
     private bool pauseMenuVisible = false;
+    //FOR TUTORIAL UI
+    private GameObject tutorialUI;
+    private bool tutorialUIDisplayed = false;
 
     //public getter-------------------------------------------------------------
     //singleton, we can access this game manager by this method
@@ -31,8 +35,8 @@ public class GameManager : MonoBehaviour
             currentManager = this; //this is the current (and only one) GameManager
             DontDestroyOnLoad(gameObject);
 
-            //Subscribing! (example)
-            //CountdownClock.OnCountdownFinish += GoToGameOverScene; //adding this GameOver function to the List of functions that will be called on this OnCountdownFinish event
+            //Subscribing!
+            PickUpRecognition.PickUpRecognized += showTutorialUI;
         }
         else
         {
@@ -46,8 +50,8 @@ public class GameManager : MonoBehaviour
         {
             currentManager = null;//set it to null on destroy
 
-            //Unsubscribing! (example)
-            //ShootLaser.OnLaserPlayerTrigger -= ChangeSceneWithDelay;                
+            //Unsubscribing!
+            PickUpRecognition.PickUpRecognized -= showTutorialUI;              
         }
     }
     //-----------------------------------------------------------------------------------------------------------------------
@@ -91,6 +95,8 @@ public class GameManager : MonoBehaviour
 
         //check if should exit application (pause menu -> exit)
         buttonPressedAction();
+        //to destoroy the tutorial object once it was displayed & right mouse button pressed
+        destroyTutorialUI();
     }
     //-----------------------------------------------------------------------------------------------------------------------
     //PAUSE MENU
@@ -139,6 +145,51 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("EXITING APPLICATION");
                 Application.Quit();
+            }
+        }
+    }
+
+    //-----------------------------------------------------------------------------------------------------------------------
+    //SHOW UI
+    //-----------------------------------------------------------------------------------------------------------------------
+
+    //Tutorial UI - display
+    //-------------------------------
+    private void showTutorialUI()
+    {
+        Debug.Log("show tutorial UI 1/2");
+
+        if (tutorialUIDisplayed == false)
+        {
+            Debug.Log("show tutorial UI 2/2");
+
+            //find the tutorial UI in the hierarchy
+            tutorialUI = GameObject.FindGameObjectWithTag("TutorialUI");
+            //make it visible
+            tutorialUI.GetComponentInChildren<Canvas>().enabled = true;
+            
+            tutorialUIDisplayed = true;//the tutorial was onced displayed
+        }
+    }
+    //Tutorial UI - destroy to not show again
+    //-------------------------------
+    private void destroyTutorialUI()
+    {
+
+        if (tutorialUIDisplayed == true)
+        {
+            Debug.Log("destroy tutorial UI 1/3 - tutorial UI displayed");
+
+            if (Input.GetMouseButtonDown(0))//left mouse button
+            {
+                Debug.Log("destroy tutorial UI 2/3 - mouse button pressed");
+
+                if (tutorialUI != null)
+                {
+                    Debug.Log("destroy tutorial UI 3/3 - destroy");
+
+                    Destroy(tutorialUI);
+                }
             }
         }
     }
