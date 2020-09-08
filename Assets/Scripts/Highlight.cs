@@ -5,19 +5,37 @@ using UnityEngine;
 public class Highlight : MonoBehaviour
 {
     public Shader shader;
+    public Shader standard;
     Material mat;
 
-    void Start()
-    {
-        mat = GetComponent<Renderer>().material;
-    }
+    public float interactionDistance = 300f;
+    [SerializeField] private bool glowing;
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        Debug.DrawRay(transform.position, transform.forward * interactionDistance, Color.red);
+
+        RaycastHit hit;
+
+        Physics.Raycast(transform.position, transform.forward, out hit, interactionDistance);
+
+        glowing = false;
+        if (Physics.Raycast(transform.position, transform.forward, out hit, interactionDistance))
+        {
+            //Debug.Log(hit.collider.tag);
+            if (hit.collider.tag == "PickUp")
+            {
+                glowing = true;
+                mat = hit.collider.GetComponent<Renderer>().material;
+            };
+        }
+
+        if(glowing && mat != null)
 		{
             mat.shader = shader;
+		} else
+		{
+            mat.shader = standard;
 		}
     }
 }
