@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject pauseMenu;//get the gameMenu obejct to be able to show/hide it
+    private bool pauseMenuVisible = false;
 
     //public getter-------------------------------------------------------------
     //singleton, we can access this game manager by this method
@@ -26,11 +30,9 @@ public class GameManager : MonoBehaviour
         {
             currentManager = this; //this is the current (and only one) GameManager
             DontDestroyOnLoad(gameObject);
-            
-            //Subscribing!
+
+            //Subscribing! (example)
             //CountdownClock.OnCountdownFinish += GoToGameOverScene; //adding this GameOver function to the List of functions that will be called on this OnCountdownFinish event
-            //CountPaintings.OnPaintingsCollected += GoToWinScene;
-            //ShootLaser.OnLaserPlayerTrigger += ChangeSceneWithDelay;
         }
         else
         {
@@ -43,15 +45,13 @@ public class GameManager : MonoBehaviour
         if(currentManager == this)//if this is the current game manager
         {
             currentManager = null;//set it to null on destroy
-            
-            //Unsubscribing!
-            //CountdownClock.OnCountdownFinish -= GoToGameOverScene; //Unsubscribing this function from the event function list
-            //CountPaintings.OnPaintingsCollected -= GoToWinScene;
+
+            //Unsubscribing! (example)
             //ShootLaser.OnLaserPlayerTrigger -= ChangeSceneWithDelay;                
         }
     }
     //-----------------------------------------------------------------------------------------------------------------------
-    //CHANGING SCENES
+    //CHANGING SCENES (example)
     //-----------------------------------------------------------------------------------------------------------------------
     /*
     public void ChangeSceneWithDelay()
@@ -65,39 +65,81 @@ public class GameManager : MonoBehaviour
         //Destroy(gameObject); //destroy this game manager from previous scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //restart current scene
     }*/
-
     //-----------------------------------------------------------------------------------------------------------------------
-    //FOR DEBUG
+    //UPDATE
     //-----------------------------------------------------------------------------------------------------------------------
     public void Update()
     {
-        //LoadScene();
+        if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            //display pause menu
+            if (Input.GetKeyDown(KeyCode.P))
+            {//if ESC was pressed & we are in the prototype scene
+
+                createPauseMenu();
+            }
+            //if pause menu player cannot move
+            if (pauseMenuVisible)
+            {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PhysicsMovement>().enabled = false;//player cannot move
+            }
+            else
+            {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PhysicsMovement>().enabled = true;//player can move
+            }
+        }
+
+        //check if should exit application (pause menu -> exit)
+        buttonPressedAction();
     }
-    public void LoadScene()
+    //-----------------------------------------------------------------------------------------------------------------------
+    //PAUSE MENU
+    //-----------------------------------------------------------------------------------------------------------------------
+
+    //Display/Hide it
+    //-------------------------------
+    private void createPauseMenu()
     {
-        //menu
-        if (Input.GetKeyDown(KeyCode.M))
+        Debug.Log("in create pause menu");
+        
+        //get the pause menu object to be able to create it
+        pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
+
+        //if there is no object called "PauseMenu"
+        //create it
+        //otherwise destroy it
+        if (pauseMenuVisible == false)
         {
-            Destroy(gameObject);
-            SceneManager.LoadScene(0);
+            //create it = show it
+            Debug.Log("show pause menu");
+            pauseMenu.GetComponentInChildren<Canvas>().enabled = true;
+            pauseMenuVisible = true;
+
+            //display the mouse coursor
+            Cursor.visible = true;
         }
-        //game
-        if (Input.GetKeyDown(KeyCode.G))
+        else
         {
-            Destroy(gameObject);
-            SceneManager.LoadScene(1);
+            //hide it
+            Debug.Log("hide pause menu");
+            pauseMenu.GetComponentInChildren<Canvas>().enabled = false;
+            pauseMenuVisible = false;
+
+            //hide the mouse coursor
+            Cursor.visible = false;
         }
-        //game over
-        if (Input.GetKeyDown(KeyCode.O))
+    }
+    //Button functionality (can't actually select buttons, just press something)
+    //-------------------------------
+    private void buttonPressedAction()
+    {
+        if (pauseMenuVisible)
         {
-            Destroy(gameObject);
-            SceneManager.LoadScene(2);
-        }
-        //win
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            Destroy(gameObject);
-            SceneManager.LoadScene(3);
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log("EXITING APPLICATION");
+                Application.Quit();
+            }
         }
     }
 }
