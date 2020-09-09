@@ -27,7 +27,7 @@ public class Highlight : MonoBehaviour
             {
                 glowing = true;
                 mat = hit.collider.GetComponent<Renderer>().material;
-            };
+            }
         }
 
         if(glowing && mat != null)
@@ -36,6 +36,7 @@ public class Highlight : MonoBehaviour
 		} else
 		{
             mat.shader = standard;
-		}
+            glowing = false;
+        }
     }
 }
