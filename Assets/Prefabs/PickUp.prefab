@@ -127,3 +127,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   theDestination: {fileID: 0}
   maxPickupDistance: 2
+  shouldItemShrink: 1
+  canBePickeUp: 1

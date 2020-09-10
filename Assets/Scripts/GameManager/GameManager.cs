@@ -66,21 +66,6 @@ public class GameManager : MonoBehaviour
         }
     }
     //-----------------------------------------------------------------------------------------------------------------------
-    //CHANGING SCENES (example)
-    //-----------------------------------------------------------------------------------------------------------------------
-    /*
-    public void ChangeSceneWithDelay()
-    {
-        Invoke("GoToGameOverScene", timeBeforeRespawn);
-    }
-    
-    private void RestartCurrentScene()
-    {
-        Debug.Log("RESTARTING CURRENT SCENE");
-        //Destroy(gameObject); //destroy this game manager from previous scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //restart current scene
-    }*/
-    //-----------------------------------------------------------------------------------------------------------------------
     //UPDATE
     //-----------------------------------------------------------------------------------------------------------------------
     public void Update()
@@ -175,7 +160,7 @@ public class GameManager : MonoBehaviour
     {
         //SHOW D2
         //for future features -> check if the audio 1 is not playing anymore then display this dialogue and delete the onld one
-        if(!d2Displayed)//was not displayed yet
+        if(!d2Displayed && !d1NotDisplayed)//was not displayed yet and the d1 was already displayed
         {
             GameObject.FindGameObjectWithTag("D2").GetComponentInChildren<Text>().enabled = true;
             playerCanMove();//player can move again -> player>physics movement
