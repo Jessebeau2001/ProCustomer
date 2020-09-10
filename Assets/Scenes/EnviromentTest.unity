@@ -108,7 +108,7 @@ NavMeshSettings:
     serializedVersion: 2
     agentTypeID: 0
     agentRadius: 0.5
-    agentHeight: 2
+    agentHeight: 1
     agentSlope: 45
     agentClimb: 0.4
     ledgeDropHeight: 0
@@ -955,10 +955,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1171188030}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0940161337743004981b0cec51a7e810, type: 3}
+  m_Script: {fileID: 11500000, guid: b061c8e2203588a4b816cff02588f539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1587663513}
+  textPrefab: {fileID: 4952519065368399536, guid: 586b8f995c3bf244c97014faa5ace0f8,
+    type: 3}
+  EnablePopup: 0
 --- !u!135 &1171188032
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1381,7 +1384,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0b1ccc8b06579434e96f33e3fdefa4e8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.2
+      value: -3.74
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0b1ccc8b06579434e96f33e3fdefa4e8,
         type: 3}
