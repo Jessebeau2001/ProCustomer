@@ -43,12 +43,9 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
             //Subscribing!
-            //PickUpRecognition.PickUpRecognized += showTutorialUI;
             LookingAtRecognition.bloodRecognized += showDialoguePlayer;
             LookingAtRecognition.npcRecognized += showDialogueNPC;
-            
-
-            //setting up variables
+            PickUp.objectClicked += npcWalks;
         }
         else
         {
@@ -63,7 +60,9 @@ public class GameManager : MonoBehaviour
             currentManager = null;//set it to null on destroy
 
             //Unsubscribing!
-            //PickUpRecognition.PickUpRecognized -= showTutorialUI;              
+            LookingAtRecognition.bloodRecognized -= showDialoguePlayer;
+            LookingAtRecognition.npcRecognized -= showDialogueNPC;
+            PickUp.objectClicked -= npcWalks;
         }
     }
     //-----------------------------------------------------------------------------------------------------------------------
@@ -186,5 +185,10 @@ public class GameManager : MonoBehaviour
 
             d2Displayed = true;//so next time you look at the NPC you will say another dialogue not this one again
         }
+    }
+
+    private void npcWalks()
+    {
+
     }
 }
