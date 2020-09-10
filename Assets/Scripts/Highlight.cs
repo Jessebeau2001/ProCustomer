@@ -30,13 +30,17 @@ public class Highlight : MonoBehaviour
             }
         }
 
-        if(glowing && mat != null)
-		{
-            mat.shader = shader;
-		} else
-		{
-            mat.shader = standard;
-            glowing = false;
+        if (mat != null)
+        {
+            if (glowing)
+            {
+                mat.shader = shader;
+            }
+            else
+            {
+                mat.shader = standard;
+                glowing = false;
+            }
         }
     }
 }
