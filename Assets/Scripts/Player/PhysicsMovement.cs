@@ -4,10 +4,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
-public enum ControlType { Force, Velocity, Position} //to be able to change the way to controll the player
+
 public class PhysicsMovement : MonoBehaviour
 {
-    public ControlType control;//for switching based on what to control the character
     Rigidbody rb; //for Force, Velocity, position control
 
     public float movementSpeed = 3f;
@@ -29,6 +28,9 @@ public class PhysicsMovement : MonoBehaviour
     public bool sprintEnabled = true;
     public bool canSprintWithPickUp = false;
 
+    //START OF GAME restrictions
+    public bool canMove = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();//rigidbody connected to this GameObject
@@ -37,6 +39,7 @@ public class PhysicsMovement : MonoBehaviour
         //Subscribing!
         PickUp.OnHoldingPickup += sprintDisable; //check out if a pickup up was picked up
         PickUp.OnNoPickup += sprintEnable;
+        GameManager.playerCanMove += movementEnabled;
     }
     private void OnDestroy()
     {
@@ -44,6 +47,7 @@ public class PhysicsMovement : MonoBehaviour
         //Unsubscribing!
         PickUp.OnHoldingPickup -= sprintEnable;
         PickUp.OnNoPickup -= sprintEnable;
+        GameManager.playerCanMove -= movementEnabled;
     }
 
     private void Update()
@@ -86,21 +90,11 @@ public class PhysicsMovement : MonoBehaviour
         }
 
         //Walking-----------------------------------------------------------
-        switch (control)
+        if (canMove)
         {
-            case ControlType.Position:
-                transform.Translate(moveVector * _speed * Time.deltaTime);
-                break;
-            case ControlType.Force:
-                rb.AddForce(moveVector * _force);
-                break;
-            case ControlType.Velocity:
-                Vector3 baseVelocity = Vector3.zero;
-                baseVelocity.y = rb.velocity.y; //in case we are walking on a slope keep the y velocity
-                //overriding the elocity of the rigid body
-                rb.velocity = baseVelocity + moveVector * _speed;
-                break;
+            transform.Translate(moveVector * _speed * Time.deltaTime);
         }
+       
 
         //reseting variables back at the end of the FixedUpdate
         _isJumpPressed = false;
@@ -142,5 +136,12 @@ public class PhysicsMovement : MonoBehaviour
         }
         Debug.Log("CheckGrounded = false");
         return false;
+    }
+    //----------------------------------------------------------------------
+    //Can player move? (start of the game player cannot move, just look around)
+    //----------------------------------------------------------------------
+    private void movementEnabled()
+    {
+        canMove = true;
     }
 }
