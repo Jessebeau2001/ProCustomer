@@ -7,13 +7,11 @@ using UnityEngine.UI;
 
 public class LookingAtRecognition : MonoBehaviour
 {
+    
     RaycastHit hitInfo;
     public float interactionDistance = 300f;
-
     public static event Action bloodRecognized;//for dialogue
     public static event Action npcRecognized;//for dialogue
-    
-
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +43,7 @@ public class LookingAtRecognition : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     //fire event so the pathfinder can tell the npc to walk somewhere
-
+        	        
                 }
             }
         }

@@ -125,5 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f8276391a8030d4e9b27f4b3365c380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dude: {fileID: 9196596740470419479, guid: 907b8f52a09354e4b8c6b3db82205df3, type: 3}
   theDestination: {fileID: 0}
   maxPickupDistance: 2
+  shouldItemShrink: 1
+  canBePickeUp: 1

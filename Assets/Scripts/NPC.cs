@@ -6,6 +6,7 @@ public class NPC : MonoBehaviour
     public Camera cam;
     public Transform textPrefab;
     public bool EnablePopup;
+    public bool EnableMoveToClickedPos = true;
     private NavMeshAgent agent;
     void Start()
     {
@@ -14,7 +15,7 @@ public class NPC : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && EnableMoveToClickedPos)
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -35,5 +36,9 @@ public class NPC : MonoBehaviour
 
     public void SetDest(Vector3 dest) {
         agent.SetDestination(dest);
+    }
+
+    public void Transl(Vector3 dest) {
+        transform.Translate(dest);
     }
 }

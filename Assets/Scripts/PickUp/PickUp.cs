@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
+    public NPC dude;
     public Transform theDestination; //the empty PickUpDestination object of a player to be able to pickUp objects
     public static event Action OnHoldingPickup;
     public static event Action OnNoPickup;
     public float maxPickupDistance = 2;//pickupDestination x pickup
     public bool shouldItemShrink = true;//if an item should get smaller when picked up
-
-    //npc walking
-    public static event Action objectClicked;//for npc pathfinding
 
     //player cant pick up stuff
     public bool canBePickeUp = false;
@@ -25,8 +23,6 @@ public class PickUp : MonoBehaviour
         if (pickupDistance < maxPickupDistance)//check if close enough to the pickup
         {
             //npc walking 
-            objectClicked();//fire event
-
             if (canBePickeUp)//no picking up anymore
             {
                 //turn off the pickUp collider
@@ -46,6 +42,10 @@ public class PickUp : MonoBehaviour
                 this.transform.parent = GameObject.Find("PickUpDestination").transform;//make this PickedUp object a child of the PickupDestination empty object
 
                 OnHoldingPickup?.Invoke();//Fireing this event -> PhysicsMovement > can not sprint anymore
+                
+                
+                //OnObjectClicked();
+                //objectClicked?.Invoke();//fire event
             }
         }
     }
@@ -72,11 +72,18 @@ public class PickUp : MonoBehaviour
                 }
 
                 GetComponent<Rigidbody>().useGravity = true;//turn gravity back on
+                OnPickup();
 
                 //Fireing this event -> PhysicsMovement > can sprint again
                 OnNoPickup?.Invoke();
             }
         }
+    }
+
+    void OnPickup() {
+        //dude.Transl(new Vector3(0, 1, 0));
+        Debug.Log("Function on question was called");
+        dude.SetDest(transform.position);
     }
 
     //Why turning off the Box Collider?

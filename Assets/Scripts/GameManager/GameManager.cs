@@ -45,7 +45,6 @@ public class GameManager : MonoBehaviour
             //Subscribing!
             LookingAtRecognition.bloodRecognized += showDialoguePlayer;
             LookingAtRecognition.npcRecognized += showDialogueNPC;
-            PickUp.objectClicked += npcWalks;
         }
         else
         {
@@ -62,7 +61,6 @@ public class GameManager : MonoBehaviour
             //Unsubscribing!
             LookingAtRecognition.bloodRecognized -= showDialoguePlayer;
             LookingAtRecognition.npcRecognized -= showDialogueNPC;
-            PickUp.objectClicked -= npcWalks;
         }
     }
     //-----------------------------------------------------------------------------------------------------------------------
@@ -185,10 +183,5 @@ public class GameManager : MonoBehaviour
 
             d2Displayed = true;//so next time you look at the NPC you will say another dialogue not this one again
         }
-    }
-
-    private void npcWalks()
-    {
-
     }
 }
