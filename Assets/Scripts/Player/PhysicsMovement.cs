@@ -90,7 +90,7 @@ public class PhysicsMovement : MonoBehaviour
         }
 
         //Walking-----------------------------------------------------------
-        if (canMove)
+        if (canMove)//from LookAtRecognition event > GameManager method, event > Physics movement bool
         {
             transform.Translate(moveVector * _speed * Time.deltaTime);
         }

@@ -34,7 +34,7 @@ public class LookingAtRecognition : MonoBehaviour
             if (hitInfo.collider.tag == "NPC")
             {
                 //Debug.Log("NPC recognized");
-                npcRecognized();//fire this event -> game manager listening
+                npcRecognized();//this event -> game manager method, event > physics movement bool
             }
 
             //For pathfinding
