@@ -16,6 +16,7 @@ TagManager:
   - DialogueManager
   - DialogueTrigger
   - DialogueSystem
+  - NightStand
   layers:
   - Default
   - TransparentFX

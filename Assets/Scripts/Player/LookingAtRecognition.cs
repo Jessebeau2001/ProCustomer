@@ -48,9 +48,6 @@ public class LookingAtRecognition : MonoBehaviour
             }else
             if (hitInfo.collider.tag == "NPC")
             {
-                //Debug.Log("NPC recognized");
-                npcRecognized();//this event -> game manager method, event > physics movement bool
-
                 if(npcRecognizedOnce == false)
                 {
                     GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();//display next dialogue (in this case dialogue 1)

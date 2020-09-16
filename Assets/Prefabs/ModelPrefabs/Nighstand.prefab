@@ -15,7 +15,7 @@ GameObject:
   m_Name: pTorus2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4665008036776843939
@@ -96,7 +96,7 @@ GameObject:
   m_Name: pCylinder1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3264174678678888499
@@ -177,7 +177,7 @@ GameObject:
   m_Name: pCylinder4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &881920069875084636
@@ -254,10 +254,10 @@ GameObject:
   - component: {fileID: 2521879697996375473}
   - component: {fileID: 2150532792505309236}
   m_Layer: 0
-  m_Name: night_stand
-  m_TagString: Untagged
+  m_Name: Nighstand
+  m_TagString: NightStand
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2521879697996375473
@@ -269,7 +269,7 @@ Transform:
   m_GameObject: {fileID: 3005119853912112907}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10.1432295, y: -4.1807895, z: 8.532}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 35, y: 35, z: 35}
   m_Children:
   - {fileID: 8642007817280402679}
   - {fileID: 951171788812886450}
@@ -314,8 +314,8 @@ GameObject:
   m_Name: pCube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &8642007817280402679
 Transform:
@@ -395,7 +395,7 @@ GameObject:
   m_Name: pCylinder2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &7856271189641493472
@@ -476,7 +476,7 @@ GameObject:
   m_Name: pCube3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &8406478092934039952
@@ -557,7 +557,7 @@ GameObject:
   m_Name: pCube5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6410060501001866561
@@ -638,7 +638,7 @@ GameObject:
   m_Name: pTorus1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6913394595814709643
@@ -719,7 +719,7 @@ GameObject:
   m_Name: pCube6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3005687804681233471
@@ -800,7 +800,7 @@ GameObject:
   m_Name: pCube4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1529037522944080046
@@ -881,7 +881,7 @@ GameObject:
   m_Name: pCube2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &951171788812886450
@@ -962,7 +962,7 @@ GameObject:
   m_Name: pCylinder3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4134145948838369925

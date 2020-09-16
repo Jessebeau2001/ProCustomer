@@ -43,7 +43,6 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
             //Subscribing!
-            LookingAtRecognition.npcRecognized += showDialogueNPC;
         }
         else
         {
@@ -58,7 +57,6 @@ public class GameManager : MonoBehaviour
             currentManager = null;//set it to null on destroy
 
             //Unsubscribing!
-            LookingAtRecognition.npcRecognized -= showDialogueNPC;
         }
     }
     //-----------------------------------------------------------------------------------------------------------------------
@@ -138,25 +136,6 @@ public class GameManager : MonoBehaviour
                 Debug.Log("EXITING APPLICATION");
                 Application.Quit();
             }
-        }
-    }
-
-    //-----------------------------------------------------------------------------------------------------------------------
-    //DIALOGUES
-    //-----------------------------------------------------------------------------------------------------------------------
-    private void showDialogueNPC()
-    {
-        //SHOW D2
-        //for future features -> check if the audio 1 is not playing anymore then display this dialogue and delete the onld one
-        if(!d2Displayed && !d1NotDisplayed)//was not displayed yet and the d1 was already displayed
-        {
-            GameObject.FindGameObjectWithTag("D2").GetComponentInChildren<Text>().enabled = true;
-            playerCanMove();//player can move again -> player>physics movement
-
-            //disable previous dialogues
-            GameObject.FindGameObjectWithTag("D1").GetComponentInChildren<Text>().enabled = false;
-
-            d2Displayed = true;//so next time you look at the NPC you will say another dialogue not this one again
         }
     }
 }
