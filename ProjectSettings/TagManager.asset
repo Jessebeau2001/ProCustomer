@@ -10,13 +10,11 @@ TagManager:
   - TutorialUI
   - Blood
   - NPC
-  - D1
-  - D2
-  - D3
   - DialogueManager
   - DialogueTrigger
   - DialogueSystem
   - NightStand
+  - PictureFrame
   layers:
   - Default
   - TransparentFX

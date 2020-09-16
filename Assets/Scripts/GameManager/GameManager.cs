@@ -17,10 +17,6 @@ public class GameManager : MonoBehaviour
     //Start of the game -> player cannot move
     public static event Action playerCanMove;//after you look at the NPC 2nd time
 
-    //For dialogues
-    public ControlType dialogueControl;//for switching based on what to control the character
-    private bool d1NotDisplayed = true;//to display D1 only once and then never againprivate bool d2Displayed = false;
-    private bool d2Displayed = false;
 
     //public getter-------------------------------------------------------------
     //singleton, we can access this game manager by this method
