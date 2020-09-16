@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
     //-----------------------------------------------------------------------------------------------------------------------
     public void Update()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 1)
+        if (SceneManager.GetActiveScene().name == "MainScene")
         {
 
             //Pause menu logic
