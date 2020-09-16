@@ -43,7 +43,6 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
             //Subscribing!
-            LookingAtRecognition.bloodRecognized += showDialoguePlayer;
             LookingAtRecognition.npcRecognized += showDialogueNPC;
         }
         else
@@ -59,7 +58,6 @@ public class GameManager : MonoBehaviour
             currentManager = null;//set it to null on destroy
 
             //Unsubscribing!
-            LookingAtRecognition.bloodRecognized -= showDialoguePlayer;
             LookingAtRecognition.npcRecognized -= showDialogueNPC;
         }
     }
@@ -146,15 +144,6 @@ public class GameManager : MonoBehaviour
     //-----------------------------------------------------------------------------------------------------------------------
     //DIALOGUES
     //-----------------------------------------------------------------------------------------------------------------------
-    private void showDialoguePlayer()
-    {
-        //Show D1
-        if (d1NotDisplayed)
-        {
-            GameObject.FindGameObjectWithTag("D1").GetComponentInChildren<Text>().enabled = true;
-            d1NotDisplayed = false;
-        }
-    }
     private void showDialogueNPC()
     {
         //SHOW D2

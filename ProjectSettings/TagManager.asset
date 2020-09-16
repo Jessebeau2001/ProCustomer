@@ -13,6 +13,9 @@ TagManager:
   - D1
   - D2
   - D3
+  - DialogueManager
+  - DialogueTrigger
+  - DialogueSystem
   layers:
   - Default
   - TransparentFX

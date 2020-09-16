@@ -23,7 +23,7 @@ public class NPC : MonoBehaviour
             if (Physics.Raycast(ray, out hit)) {
                 agent.SetDestination(hit.point);
                 if (EnablePopup)
-                    TextPopup("Testlalalalablublubruhriebruhma");
+                    TextPopup("Testlalalalablublubruhriebruhma");//nice comment you got here :3
             }
         }
     }

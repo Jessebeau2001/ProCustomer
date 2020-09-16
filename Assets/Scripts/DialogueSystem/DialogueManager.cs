@@ -32,6 +32,9 @@ public class DialogueManager : MonoBehaviour
             sentences.Enqueue(sentence);//put the sentences in the queue
         }
 
+        //Make the canvas of DialogueSystem visibel
+        GameObject.FindGameObjectWithTag("DialogueSystem").GetComponentInChildren<Canvas>().enabled = true;
+
         //display the sentences in the beginnig of the queue
         DisplayNextSentence();
     }
