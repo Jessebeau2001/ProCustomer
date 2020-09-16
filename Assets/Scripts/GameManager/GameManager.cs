@@ -71,16 +71,24 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
 
-            //display pause menu
+            //Pause menu logic
+            //-------------------------------
             if (Input.GetKeyDown(KeyCode.P))
-            {//if ESC was pressed & we are in the prototype scene
+            {//if P was pressed & we are in the prototype scene
 
                 createPauseMenu();
             }
-            //if pause menu player cannot move
+            
             if (pauseMenuVisible)
             {
                 GameObject.FindGameObjectWithTag("Player").GetComponent<PhysicsMovement>().enabled = false;//player cannot move
+                //Buttons pressed logic
+                //--------------------------------------
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    Debug.Log("EXITING APPLICATION");
+                    Application.Quit();//exit the game
+                }
             }
             else
             {
@@ -99,33 +107,26 @@ public class GameManager : MonoBehaviour
     //-------------------------------
     private void createPauseMenu()
     {
-        Debug.Log("in create pause menu");
+        //Debug.Log("in create pause menu");
         
         //get the pause menu object to be able to create it
-        pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
+        pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");//find the pause menu object in hierarchy
 
         //if there is no object called "PauseMenu"
-        //create it
-        //otherwise destroy it
+        //create it x otherwise destroy it
         if (pauseMenuVisible == false)
         {
             //create it = show it
-            Debug.Log("show pause menu");
-            pauseMenu.GetComponentInChildren<Canvas>().enabled = true;
+            //Debug.Log("show pause menu");
+            pauseMenu.GetComponentInChildren<Canvas>().enabled = true;//enable canvas
             pauseMenuVisible = true;
-
-            //display the mouse coursor
-            Cursor.visible = true;
         }
         else
         {
             //hide it
-            Debug.Log("hide pause menu");
-            pauseMenu.GetComponentInChildren<Canvas>().enabled = false;
+            //Debug.Log("hide pause menu");
+            pauseMenu.GetComponentInChildren<Canvas>().enabled = false;//disable canvas
             pauseMenuVisible = false;
-
-            //hide the mouse coursor
-            Cursor.visible = false;
         }
     }
     //Button functionality (can't actually select buttons, just press something)
