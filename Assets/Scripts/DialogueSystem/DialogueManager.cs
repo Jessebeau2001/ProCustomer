@@ -12,14 +12,28 @@ public class DialogueManager : MonoBehaviour
     //FIFO collection of sentences
     private Queue<string> sentences;//keeping track of all of the sentences in our current dialogue
 
+    //----------------------------------------------------------------------------------------
+    //Events listener
+    //----------------------------------------------------------------------------------------
+    private void Awake()
+    {
+        VideoManager.m1Playing += HideDialogue;
+        VideoManager.m1DonePlaying += DisplayDialogue;
+    }
+    private void OnDestroy()
+    {
+        VideoManager.m1Playing -= HideDialogue;
+        VideoManager.m1DonePlaying -= DisplayDialogue;
+    }
+
 
     void Start()
     {
         sentences = new Queue<string>();
     }
-
-
-    
+    //----------------------------------------------------------------------------------------
+    //Start dialogue
+    //----------------------------------------------------------------------------------------
     public void StartDialogue(Dialogue dialogue)
     {
         Debug.Log("Starting conversation with ");
@@ -39,6 +53,9 @@ public class DialogueManager : MonoBehaviour
         DisplayNextSentence();
     }
 
+    //----------------------------------------------------------------------------------------
+    //Next dialogue
+    //----------------------------------------------------------------------------------------
     public void DisplayNextSentence()
     {
         //TRIGGER HERE---------------------------------------------------
@@ -55,8 +72,26 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = sentence;//display the current sentence on the UI
     }
 
+    //----------------------------------------------------------------------------------------
+    //End dialogue
+    //----------------------------------------------------------------------------------------
     void EndDialogue()
     {
         Debug.Log("End of conversation");
+    }
+
+    //----------------------------------------------------------------------------------------
+    //Hide dialogue canvas
+    //----------------------------------------------------------------------------------------
+    public void HideDialogue()
+    {
+        GameObject.FindGameObjectWithTag("DialogueSystem").GetComponentInChildren<Canvas>().enabled = false;
+    }
+    //----------------------------------------------------------------------------------------
+    //Display dialogue canvas
+    //----------------------------------------------------------------------------------------
+    public void DisplayDialogue()
+    {
+        GameObject.FindGameObjectWithTag("DialogueSystem").GetComponentInChildren<Canvas>().enabled = true;
     }
 }

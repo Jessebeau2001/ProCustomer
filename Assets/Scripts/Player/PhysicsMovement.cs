@@ -39,7 +39,7 @@ public class PhysicsMovement : MonoBehaviour
         //Subscribing!
         PickUp.OnHoldingPickup += sprintDisable; //check out if a pickup up was picked up
         PickUp.OnNoPickup += sprintEnable;
-        GameManager.playerCanMove += movementEnabled;
+        //GameManager.playerCanMove += movementEnabled;
     }
     private void OnDestroy()
     {
@@ -47,7 +47,7 @@ public class PhysicsMovement : MonoBehaviour
         //Unsubscribing!
         PickUp.OnHoldingPickup -= sprintEnable;
         PickUp.OnNoPickup -= sprintEnable;
-        GameManager.playerCanMove -= movementEnabled;
+        //GameManager.playerCanMove -= movementEnabled;
     }
 
     private void Update()

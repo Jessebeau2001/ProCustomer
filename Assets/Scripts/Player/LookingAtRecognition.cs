@@ -27,13 +27,9 @@ public class LookingAtRecognition : MonoBehaviour
     //events for playing videos
     public static event Action playMemory1;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //events for audio
+    public static event Action playAudioDoorKnob;
 
-    // Update is called once per frame
     void Update()
     {
         //raycast to recognize objects
@@ -47,49 +43,62 @@ public class LookingAtRecognition : MonoBehaviour
                 ((Curtain) hitInfo.collider.gameObject.GetComponent(typeof(Curtain))).SwapState();
             }
 
+            //---------------------------------------------------------------------------------------
+            //BLOOD
+            //---------------------------------------------------------------------------------------
             if (hitInfo.collider.tag == "Blood")
             {
-                if(dialogueStarted == false)//to start the dialogue only once
+                //0---------------------Look at Blood, start the dialogue system
+                if (dialogueStarted == false)//to start the dialogue only once
                 {
                     GameObject.FindGameObjectWithTag("DialogueTrigger").GetComponent<DialogueTrigger>().TriggerDialogue();//start the dialogue
+
+                    playAudioDoorKnob();//SOUND
+
                     dialogueStarted = true;
                 }
                 
             }
+
+            //---------------------------------------------------------------------------------------
+            //NPC
+            //---------------------------------------------------------------------------------------
             if (hitInfo.collider.tag == "NPC")
             {
-                //2
-                //NPC looked at 1st time
+                //1---------------------NPC looked at 1st time
                 if (npcRecognizedOnce == false && dialogueStarted && pictureFrameRecognizedOnce == false)
                 {
                     GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();//display next dialogue (in this case dialogue 1)
                     GameObject.FindGameObjectWithTag("NPC").GetComponent<NPC>().SetDest(GameObject.FindGameObjectWithTag("NightStand").transform.position);//set the destination of the NPC to the position of the night stand
-                    //MAKE NPC CRY SOUND
+
+                    //SOUND
 
                     npcRecognizedOnce = true;
                 }
-                //NPC looked at 2nd time, after we looked at the pictureFrame
-                //4
+                //3---------------------NPC looked at 2nd time, after we looked at the pictureFrame
                 else if (npcRecognizedTwice == false && npcRecognizedOnce && dialogueStarted && pictureFrameRecognizedOnce)
                 {
                     //display this dialogue, then wait for some time and display the next one again
                     GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();//display next dialogue (in this case dialogue 1)
-                    StartCoroutine(CountdownToStart());//wait then display the next dialogue
+                    //StartCoroutine(CountdownToStart());//wait then display the next dialogue
 
                     npcRecognizedTwice = true;
                 }
             }
-            
+
+            //---------------------------------------------------------------------------------------
+            //PICTURE FRAME
+            //---------------------------------------------------------------------------------------
             if (hitInfo.collider.tag == "PictureFrame")
             {
-                //3
+                //2---------------------Looking at PictureFrame 1st time
                 if (pictureFrameRecognizedOnce == false && npcRecognizedOnce)//didn't look at the pictureFrame before and the NPC was already recognized
                 {
                     GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();//display next dialogue (in this case dialogue 1)
 
                     pictureFrameRecognizedOnce = true;
                 }else
-                //5
+                //4---------------------Looking at PictureFrame 2nd time
                 if (pictureFrameRecognizedTwice == false && npcRecognizedTwice)//looked at the picture then at the npc, she was crying and now he realised hes dead
                 {
                     Debug.Log("second frame.");
@@ -102,24 +111,16 @@ public class LookingAtRecognition : MonoBehaviour
                     pictureFrameRecognizedTwice = true;
                 }
             }
-
-            //For pathfinding
-            // if (hitInfo.collider.tag == "PickUp")
-            // {
-            //     if (Input.GetMouseButtonDown(0))
-            //     {
-            //         //fire event so the pathfinder can tell the npc to walk somewhere
-        	        
-            //     }
-            // }
-
         }
     }
 
-    //Count down timer
+
+    //-------------------------------------------------------------------------------------------------
+    //Wait then next dialogue
+    //-------------------------------------------------------------------------------------------------
     IEnumerator CountdownToStart()
     {
-        while(waitForSeconds > 0)
+        while(waitForSeconds > 0)//Count down timer
         {
             yield return new WaitForSeconds(1f);//wait for x seconds and come to this code later
 
