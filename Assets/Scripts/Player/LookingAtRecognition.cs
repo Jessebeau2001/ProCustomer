@@ -40,8 +40,6 @@ public class LookingAtRecognition : MonoBehaviour
         Debug.DrawRay(transform.position, transform.forward * interactionDistance, Color.green);
         if (Physics.Raycast(this.transform.position, transform.forward, out hitInfo, interactionDistance))
         {
-            //Debug.Log("Collider = " +hitInfo.collider.tag);
-            //for dialogue
             //1
             if (hitInfo.collider.tag == "Blood")
             {
@@ -74,7 +72,7 @@ public class LookingAtRecognition : MonoBehaviour
                 {
                     //display this dialogue, then wait for some time and display the next one again
                     GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();//display next dialogue (in this case dialogue 1)
-                    StartCoroutine(CountdownToStart());//wait then display the next dialogue
+                    //StartCoroutine(CountdownToStart());//wait then display the next dialogue
 
                     npcRecognizedTwice = true;
                 }
