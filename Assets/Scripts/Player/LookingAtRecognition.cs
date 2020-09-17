@@ -150,8 +150,9 @@ public class LookingAtRecognition : MonoBehaviour
         if (pictureFrameRecognizedTwice && !wasAfterM1ConversationPlayed && canAfterM1ConversationStart)
         {
             Debug.Log("Attempting to run pen Code");
+            //dialogue num 5
+            GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();
 
-            StartCoroutine(CountdownToStart(waitForSeconds * 2, true));//num 5
             wasAfterM1ConversationPlayed = true;
 
             StartCoroutine(CountdownToStart(waitForSeconds * 2, true));//num 6

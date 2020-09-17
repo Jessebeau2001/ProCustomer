@@ -11,11 +11,11 @@ public class PosterFloorTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        VideoManager.m3DonePlaying += playM3Enabled;
+        VideoManager.m2DonePlaying += playM3Enabled;
     }
     private void OnDestroy()
     {
-        VideoManager.m3DonePlaying -= playM3Enabled;
+        VideoManager.m2DonePlaying -= playM3Enabled;
     }
     private void playM3Enabled()
     {
