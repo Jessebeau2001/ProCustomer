@@ -26,6 +26,9 @@ public class DialogueManager : MonoBehaviour
         //M2
         VideoManager.m2Playing += HideDialogue;
         VideoManager.m2DonePlaying += DisplayDialogue;
+        //M3
+        VideoManager.m3Playing += HideDialogue;
+        VideoManager.m3DonePlaying += DisplayDialogue;
     }
     private void OnDestroy()
     {
@@ -35,6 +38,9 @@ public class DialogueManager : MonoBehaviour
         //M2
         VideoManager.m2Playing -= HideDialogue;
         VideoManager.m2DonePlaying -= DisplayDialogue;
+        //M3
+        VideoManager.m3Playing -= HideDialogue;
+        VideoManager.m3DonePlaying -= DisplayDialogue;
     }
 
 
