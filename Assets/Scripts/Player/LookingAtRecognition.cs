@@ -43,6 +43,10 @@ public class LookingAtRecognition : MonoBehaviour
             //Debug.Log("Collider = " +hitInfo.collider.tag);
             //for dialogue
             //1
+            if (hitInfo.collider.tag == "InteractableCurtain" && Input.GetKeyDown(KeyCode.F)) {
+                ((Curtain) hitInfo.collider.gameObject.GetComponent(typeof(Curtain))).SwapState();
+            }
+
             if (hitInfo.collider.tag == "Blood")
             {
                 if(dialogueStarted == false)//to start the dialogue only once
@@ -100,14 +104,14 @@ public class LookingAtRecognition : MonoBehaviour
             }
 
             //For pathfinding
-            if (hitInfo.collider.tag == "PickUp")
-            {
-                if (Input.GetMouseButtonDown(0))
-                {
-                    //fire event so the pathfinder can tell the npc to walk somewhere
+            // if (hitInfo.collider.tag == "PickUp")
+            // {
+            //     if (Input.GetMouseButtonDown(0))
+            //     {
+            //         //fire event so the pathfinder can tell the npc to walk somewhere
         	        
-                }
-            }
+            //     }
+            // }
 
         }
     }

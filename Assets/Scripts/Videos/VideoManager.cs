@@ -10,7 +10,7 @@ public class VideoManager : MonoBehaviour
     public VideoPlayer memory2;
     public VideoPlayer memory3;
 
-    private bool isMemory1PLaying = false;
+    //private bool isMemory1PLaying = false;
 
     private void Awake()
     {
