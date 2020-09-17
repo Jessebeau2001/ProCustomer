@@ -15,7 +15,7 @@ TagManager:
   - DialogueSystem
   - NightStand
   - PictureFrame
-  - Pen
+  - InteractableCurtain
   layers:
   - Default
   - TransparentFX

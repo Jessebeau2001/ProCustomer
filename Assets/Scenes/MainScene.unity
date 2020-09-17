@@ -4153,6 +4153,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: curtain_0
       objectReference: {fileID: 0}
+    - target: {fileID: 5408387347372098025, guid: 819ba31c523c1254dbb4c82730b9fb00,
+        type: 3}
+      propertyPath: m_TagString
+      value: InteractableCurtain
+      objectReference: {fileID: 0}
     - target: {fileID: 5761945216945331921, guid: 819ba31c523c1254dbb4c82730b9fb00,
         type: 3}
       propertyPath: m_LocalScale.y
