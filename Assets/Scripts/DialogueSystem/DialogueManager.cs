@@ -12,6 +12,9 @@ public class DialogueManager : MonoBehaviour
     //FIFO collection of sentences
     private Queue<string> sentences;//keeping track of all of the sentences in our current dialogue
 
+    [SerializeField] private bool _curtainClosed;
+    [SerializeField] private bool _lightsOut;
+
     //----------------------------------------------------------------------------------------
     //Events listener
     //----------------------------------------------------------------------------------------
@@ -38,6 +41,10 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         sentences = new Queue<string>();
+    }
+
+    void Update() {
+        ThridScene();
     }
     //----------------------------------------------------------------------------------------
     //Start dialogue
@@ -101,5 +108,19 @@ public class DialogueManager : MonoBehaviour
     public void DisplayDialogue()
     {
         GameObject.FindGameObjectWithTag("DialogueSystem").GetComponentInChildren<Canvas>().enabled = true;
+    }
+
+    private void ThridScene() {
+        if (!(_curtainClosed && _lightsOut)) return;
+    }
+
+    public bool curtainClosed {
+        set { _curtainClosed = value; }
+        get { return _curtainClosed; }
+    }
+
+    public bool lightsOut {
+        set { _lightsOut = value; }
+        get { return _lightsOut; }
     }
 }

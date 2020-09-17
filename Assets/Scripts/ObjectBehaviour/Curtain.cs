@@ -11,6 +11,7 @@ public class Curtain : MonoBehaviour
     [SerializeField] string text;
     [SerializeField] Animator anim;
     [SerializeField] GameObject textMesh;
+    public DialogueManager dManage;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -38,5 +39,6 @@ public class Curtain : MonoBehaviour
 
     private void UpdateState() {
         anim.SetBool("IsClosed", isClosed);
+        dManage.curtainClosed = isClosed;
     }
 }
