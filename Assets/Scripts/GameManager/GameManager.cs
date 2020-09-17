@@ -88,7 +88,6 @@ public class GameManager : MonoBehaviour
                 GameObject.FindGameObjectWithTag("Player").GetComponent<PhysicsMovement>().enabled = true;//player can move
             }
         }
-
         //check if should exit application (pause menu -> exit)
         buttonPressedAction();
     }
