@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
 {
     public AudioSource gameMusic;
     public AudioSource doorKnob;
+    public AudioSource allyCry;
 
     //checking if music is already playing
     private bool isGameMusicPlaying = false;
@@ -33,6 +34,7 @@ public class AudioManager : MonoBehaviour
 
             //listen to events to play audioSources
             LookingAtRecognition.playAudioDoorKnob += playDoorKnob;
+            LookingAtRecognition.playAllyCry += playAllyCry;
         }
         else
         {
@@ -46,6 +48,7 @@ public class AudioManager : MonoBehaviour
             currentAudioManager = null;//set it to null on destroy
 
             LookingAtRecognition.playAudioDoorKnob -= playDoorKnob;
+            LookingAtRecognition.playAllyCry -= playAllyCry;
         }
     }
 
@@ -66,5 +69,9 @@ public class AudioManager : MonoBehaviour
     private void playDoorKnob()
     {
         doorKnob.Play();
+    }
+    private void playAllyCry()
+    {
+        allyCry.Play();
     }
 }

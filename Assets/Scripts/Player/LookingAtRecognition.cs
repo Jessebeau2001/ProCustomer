@@ -29,6 +29,7 @@ public class LookingAtRecognition : MonoBehaviour
 
     //events for audio
     public static event Action playAudioDoorKnob;
+    public static event Action playAllyCry;
 
     void Update()
     {
@@ -64,7 +65,7 @@ public class LookingAtRecognition : MonoBehaviour
                     GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();//display next dialogue (in this case dialogue 1)
                     GameObject.FindGameObjectWithTag("NPC").GetComponent<NPC>().SetDest(GameObject.FindGameObjectWithTag("NightStand").transform.position);//set the destination of the NPC to the position of the night stand
 
-                    //SOUND
+                    playAllyCry();//SOUND
 
                     npcRecognizedOnce = true;
                 }

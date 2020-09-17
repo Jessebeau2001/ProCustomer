@@ -107,8 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b78d3b10679bc49a92813bea4853ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameMusic: {fileID: 0}
+  gameMusic: {fileID: 7391336817755129486}
   doorKnob: {fileID: 7536419854000938809}
+  allyCry: {fileID: 0}
 --- !u!1 &5165277519427178592
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,10 +152,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b4f35789f4952d0449dcda4959ac3e47, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.05
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
