@@ -15,7 +15,9 @@ public class GameManager : MonoBehaviour
     private bool pauseMenuVisible = false;
 
     //Start of the game -> player cannot move
-    //public static event Action playerCanMove;//after you look at the NPC 2nd time
+    #pragma warning disable CS0067
+    public static event Action playerCanMove;//after you look at the NPC 2nd time
+    #pragma warning restore CS0067 //JESSE: Disables/enables warning that says that the event is unused even though it is used
 
     //public getter-------------------------------------------------------------
     //singleton, we can access this game manager by this method
