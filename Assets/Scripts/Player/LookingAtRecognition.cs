@@ -42,6 +42,7 @@ public class LookingAtRecognition : MonoBehaviour
         {
             //Debug.Log("Collider = " +hitInfo.collider.tag);
             //for dialogue
+            //1
             if (hitInfo.collider.tag == "Blood")
             {
                 if(dialogueStarted == false)//to start the dialogue only once
@@ -53,6 +54,7 @@ public class LookingAtRecognition : MonoBehaviour
             }
             if (hitInfo.collider.tag == "NPC")
             {
+                //2
                 //NPC looked at 1st time
                 if (npcRecognizedOnce == false && dialogueStarted && pictureFrameRecognizedOnce == false)
                 {
@@ -63,6 +65,7 @@ public class LookingAtRecognition : MonoBehaviour
                     npcRecognizedOnce = true;
                 }
                 //NPC looked at 2nd time, after we looked at the pictureFrame
+                //4
                 else if (npcRecognizedTwice == false && npcRecognizedOnce && dialogueStarted && pictureFrameRecognizedOnce)
                 {
                     //display this dialogue, then wait for some time and display the next one again
@@ -75,13 +78,18 @@ public class LookingAtRecognition : MonoBehaviour
             
             if (hitInfo.collider.tag == "PictureFrame")
             {
+                //3
                 if (pictureFrameRecognizedOnce == false && npcRecognizedOnce)//didn't look at the pictureFrame before and the NPC was already recognized
                 {
                     GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();//display next dialogue (in this case dialogue 1)
 
                     pictureFrameRecognizedOnce = true;
-                }else if (pictureFrameRecognizedTwice == false && npcRecognizedTwice)//looked at the picture then at the npc, she was crying and now he realised hes dead
+                }else
+                //5
+                if (pictureFrameRecognizedTwice == false && npcRecognizedTwice)//looked at the picture then at the npc, she was crying and now he realised hes dead
                 {
+                    Debug.Log("second frame.");
+
                     StartCoroutine(CountdownToStart());//wait then display the next dialogue
 
                     //PLAY THE MEMORY 1 and then next dialogue

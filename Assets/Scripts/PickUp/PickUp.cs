@@ -82,7 +82,7 @@ public class PickUp : MonoBehaviour
 
     void OnPickup() {
         //dude.Transl(new Vector3(0, 1, 0));
-        Debug.Log("Function on question was called");
+        //Debug.Log("Function on question was called");
         dude.SetDest(transform.position);
     }
 
