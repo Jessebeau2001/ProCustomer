@@ -172,7 +172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5895287292623923256}
   m_Layer: 0
-  m_Name: Chair UV
+  m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -187,7 +187,7 @@ Transform:
   m_GameObject: {fileID: 6528974959745266306}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.38608003, y: -4.18079, z: 8.528787}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children:
   - {fileID: 1843336111251699059}
   - {fileID: 1648085336478017079}

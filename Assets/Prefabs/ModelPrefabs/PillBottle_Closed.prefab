@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3168661536410053891}
   m_Layer: 0
-  m_Name: Bill Bottle UV
+  m_Name: PillBottle_Closed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,7 +106,7 @@ Transform:
   m_GameObject: {fileID: 2356095421804869561}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.22649264, y: -1.107, z: 4.6033144}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 2585523176688871234}
   - {fileID: 7062502345307427794}

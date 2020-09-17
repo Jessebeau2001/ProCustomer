@@ -19,6 +19,7 @@ TagManager:
   - LightSwitch
   - Pen
   - Poster
+  - Door
   layers:
   - Default
   - TransparentFX

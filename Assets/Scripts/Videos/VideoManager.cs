@@ -123,5 +123,7 @@ public class VideoManager : MonoBehaviour
     {
         Debug.Log("VideoManager M3 - done");
         m3DonePlaying();//event
+
+        GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();
     }
 }

@@ -3867,7 +3867,7 @@ PrefabInstance:
     - target: {fileID: 435166872920252224, guid: 28102e06a152a6445af81194b591c762,
         type: 3}
       propertyPath: dialogue.sentences.Array.size
-      value: 15
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 435166872920252224, guid: 28102e06a152a6445af81194b591c762,
         type: 3}
@@ -3926,7 +3926,7 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogue.sentences.Array.data[9]
       value: "Ally:\r\nSo, you wrote me a letter? But, where\u2019s the rest, this
-        is just a piece?"
+        is just a piece."
       objectReference: {fileID: 0}
     - target: {fileID: 435166872920252224, guid: 28102e06a152a6445af81194b591c762,
         type: 3}
@@ -3945,20 +3945,16 @@ PrefabInstance:
     - target: {fileID: 435166872920252224, guid: 28102e06a152a6445af81194b591c762,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[12]
-      value: 'Ally:
+      value: 'Ally: Why couldn''t you just be happy? You had such a god life.
 
-        Why couldn''t you just be happy?
-
-        You had such
-        a god life.'
+        Specter:
+        It''s not that simple. The letter will explain everything. Come on I know
+        where to go next.'
       objectReference: {fileID: 0}
     - target: {fileID: 435166872920252224, guid: 28102e06a152a6445af81194b591c762,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[13]
-      value: 'Specter:
-
-        It''s not that simple. The letter will explain everything.
-        Come on I know where to go next.'
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 435166872920252224, guid: 28102e06a152a6445af81194b591c762,
         type: 3}
@@ -4418,21 +4414,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5037502009433997402, guid: d240e9b54bc67b94db3565cd434d344b,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.057142854
-      objectReference: {fileID: 0}
-    - target: {fileID: 5037502009433997402, guid: d240e9b54bc67b94db3565cd434d344b,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.057142854
-      objectReference: {fileID: 0}
-    - target: {fileID: 5037502009433997402, guid: d240e9b54bc67b94db3565cd434d344b,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.057142854
       objectReference: {fileID: 0}
     - target: {fileID: 5666405534699428576, guid: d240e9b54bc67b94db3565cd434d344b,
         type: 3}

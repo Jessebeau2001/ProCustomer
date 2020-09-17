@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LookingAtRecognition : MonoBehaviour
 {
@@ -8,17 +9,19 @@ public class LookingAtRecognition : MonoBehaviour
     //This script starts the dialogue
     //Based on conditions and recognized objects it is telling the DialogueTrigger to show the next dialogue
 
+    //recognition condition
+    private bool _canRecognizeDoor = false;
+
     #pragma warning disable CS0067
     public NPC npc;
     public DialogueManager dManage;
     public Transform nightStand;
-    
 
     RaycastHit hitInfo;
     public float interactionDistance = 300f;
     public int waitForSeconds = 5;
 
-    private bool dialogueStarted = false;//to start the dialogue only once
+    private bool _dialogueStarted = false;//to start the dialogue only once
     private bool npcRecognizedOnce = false;//to show go to the 2nd dialogue and do it only once
     private bool npcRecognizedTwice = false;
     private bool pictureFrameRecognizedOnce = false;
@@ -43,6 +46,9 @@ public class LookingAtRecognition : MonoBehaviour
     public static event Action playAudioDoorKnob;
     public static event Action playAllyCry;
 
+    //other events
+    public static event Action changeToEndScene;
+
     #pragma warning restore CS0067
 
     private void Awake()
@@ -50,14 +56,12 @@ public class LookingAtRecognition : MonoBehaviour
         VideoManager.m1DonePlaying += afterM1ConversationCanStart;
         TableFloorTrigger.penOnFloor += makeAllyFindFirstLetterPiece;//make Ally walk to the table and find the first letter piece
         VideoManager.m2DonePlaying += afterM2PlayedDialogues;//for dialogue num 9
-        VideoManager.m3DonePlaying -= afterM3PlayedDialogues;
     }
     private void OnDestroy()
     {
         VideoManager.m1DonePlaying -= afterM1ConversationCanStart;
         TableFloorTrigger.penOnFloor -= makeAllyFindFirstLetterPiece;
         VideoManager.m2DonePlaying -= afterM2PlayedDialogues;//for dialogue num 9
-        VideoManager.m3DonePlaying -= afterM3PlayedDialogues;
     }
     void Update()
     {
@@ -84,16 +88,16 @@ public class LookingAtRecognition : MonoBehaviour
 
                 case "Blood":
                     //Look at Blood, start the dialogue system
-                    if (dialogueStarted == false) { //to start the dialogue only once
+                    if (_dialogueStarted == false) { //to start the dialogue only once
                         GameObject.FindGameObjectWithTag("DialogueTrigger").GetComponent<DialogueTrigger>().TriggerDialogue();//start the dialogue
                         playAudioDoorKnob(); //SOUND
-                        dialogueStarted = true;
+                        _dialogueStarted = true;
                     }
                     break;
 
                 case "NPC":
                     //1st time looing at NPC
-                    if (npcRecognizedOnce == false && dialogueStarted && pictureFrameRecognizedOnce == false) {
+                    if (npcRecognizedOnce == false && _dialogueStarted && pictureFrameRecognizedOnce == false) {
                         Debug.Log("First time looking at NPC");
                         dManage.DisplayNextSentence();
                         npc.SetDest(nightStand.position);
@@ -101,7 +105,7 @@ public class LookingAtRecognition : MonoBehaviour
                         npcRecognizedOnce = true;
                     }
                     //2nd time looking at NPC (After PicFrame)
-                    else if (npcRecognizedTwice == false && npcRecognizedOnce && dialogueStarted && pictureFrameRecognizedOnce) {
+                    else if (npcRecognizedTwice == false && npcRecognizedOnce && _dialogueStarted && pictureFrameRecognizedOnce) {
                         Debug.Log("Second time looking at NPC");
                         //display this dialogue, then wait for some time and display the next one again
                         dManage.DisplayNextSentence(); //display next dialogue (in this case dialogue 1)
@@ -251,13 +255,5 @@ public class LookingAtRecognition : MonoBehaviour
             //dialogue 11 can be displayed now -> Update
             canDisplay11 = true;
         }
-    }
-    //---------------------------------------------------------
-    //Display dialogues after M3 was played
-    private void afterM3PlayedDialogues()
-    {
-        //12--------------------Memory 3 was played now just exit
-        GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();
-        StartCoroutine(CountdownToStart(waitForSeconds * 2, true));//wait then display the next dialogue
     }
 }

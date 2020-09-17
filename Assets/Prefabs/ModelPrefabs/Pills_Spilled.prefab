@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4355737953991623397}
   m_Layer: 0
-  m_Name: New Pill
+  m_Name: Pills_Spilled
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 3979317556319869023}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.804, y: 0.115, z: 6.1325746}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.40000004, y: 0.4, z: 0.40000004}
   m_Children:
   - {fileID: 2041026072722574427}
   - {fileID: 8795680713766553821}

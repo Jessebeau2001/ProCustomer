@@ -263,7 +263,7 @@ MonoBehaviour:
   canJump: 1
   sprintEnabled: 1
   canSprintWithPickUp: 1
-  canMove: 0
+  canMove: 1
 --- !u!1 &8808025828489441830
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,13 +323,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8808025828623566694}
-  m_LocalRotation: {x: 0.422768, y: -0, z: -0, w: 0.90623796}
+  m_LocalRotation: {x: 0.053209007, y: -0.00000014901161, z: -0.000000022351742, w: 0.99858344}
   m_LocalPosition: {x: 0, y: 0.928, z: 0.545}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8808025828027717028}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 50.019, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 6.1, y: 0, z: 0}
 --- !u!20 &8808025828623566693
 Camera:
   m_ObjectHideFlags: 0
@@ -423,5 +423,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80aace718a93fa845b7ebae9a0f3e78d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npc: {fileID: 0}
+  dManage: {fileID: 0}
+  nightStand: {fileID: 0}
   interactionDistance: 300
   waitForSeconds: 5

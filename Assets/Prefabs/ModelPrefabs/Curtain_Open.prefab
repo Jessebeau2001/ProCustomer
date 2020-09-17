@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 7861063769724474756}
   m_Layer: 0
   m_Name: Curtain_Open
-  m_TagString: Untagged
+  m_TagString: InteractableCurtain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,7 +197,7 @@ Transform:
   m_GameObject: {fileID: 5408387347372098025}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.19999996, y: 0.19999999, z: 0.19999996}
   m_Children:
   - {fileID: 5761945216945331921}
   - {fileID: 3180042875835129154}
@@ -249,10 +249,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d14f84eb8868fb4684cf6fefee19d92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  closed: 0
+  isClosed: 0
+  enableText: 0
   text: 
   anim: {fileID: 0}
   textMesh: {fileID: 0}
+  dManage: {fileID: 0}
 --- !u!1 &8339330467694678235
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,8 +281,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8339330467694678235}
   m_LocalRotation: {x: 0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.2397459, y: 2.4954395, z: -0.21017045}
-  m_LocalScale: {x: 0.00066005654, y: 0.01230591, z: 0.00048416835}
+  m_LocalPosition: {x: -0.014, y: 2.4954395, z: -0.21}
+  m_LocalScale: {x: 0.00066005654, y: 0.017, z: 0.00048416835}
   m_Children: []
   m_Father: {fileID: 4631287079549311827}
   m_RootOrder: 0
