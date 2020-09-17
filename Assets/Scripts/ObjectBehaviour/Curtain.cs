@@ -6,6 +6,8 @@ using TMPro;
 public class Curtain : MonoBehaviour
 {
     public bool isClosed;
+
+    public bool enableText;
     [SerializeField] string text;
     [SerializeField] Animator anim;
     [SerializeField] GameObject textMesh;
@@ -18,7 +20,8 @@ public class Curtain : MonoBehaviour
 
     void Update()
     {
-        DisableText();
+        textMesh.SetActive(enableText);
+        enableText = false;
     }
 
     private void UpdateString() {
@@ -36,13 +39,4 @@ public class Curtain : MonoBehaviour
     private void UpdateState() {
         anim.SetBool("IsClosed", isClosed);
     }
-
-    public void EnableText() {
-        textMesh.SetActive(true);
-    }
-
-    public void DisableText() {
-        textMesh.SetActive(false);
-    }
-
 }

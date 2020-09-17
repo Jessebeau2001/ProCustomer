@@ -13,6 +13,9 @@ public class LookingAtRecognition : MonoBehaviour
     //This script starts the dialogue
     //Based on conditions and recognized objects it is telling the DialogueTrigger to show the next dialogue
 
+    public NPC npc;
+    public DialogueManager dManage;
+    public Transform nightStand;
 
     RaycastHit hitInfo;
     public float interactionDistance = 300f;
@@ -59,7 +62,7 @@ public class LookingAtRecognition : MonoBehaviour
 
             switch (obj.tag) {
                 case "InteractableCurtain":
-                    ((Curtain) obj.GetComponent(typeof(Curtain))).EnableText();
+                    ((Curtain) obj.GetComponent(typeof(Curtain))).enableText = true;
                     if (Input.GetKeyDown(KeyCode.F))
                         ((Curtain) obj.GetComponent(typeof(Curtain))).SwapState();
                     break;
@@ -81,16 +84,17 @@ public class LookingAtRecognition : MonoBehaviour
                 case "NPC":
                     //1st time looing at NPC
                     if (npcRecognizedOnce == false && dialogueStarted && pictureFrameRecognizedOnce == false) {
-                        GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();//display next dialogue (in this case dialogue 1)
-                        GameObject.FindGameObjectWithTag("NPC").GetComponent<NPC>().SetDest(GameObject.FindGameObjectWithTag("NightStand").transform.position);//set the destination of the NPC to the position of the night stand
-
+                        Debug.Log("First time looking at NPC");
+                        dManage.DisplayNextSentence();
+                        npc.SetDest(nightStand.position);
                         playAllyCry();//SOUND
                         npcRecognizedOnce = true;
                     }
                     //2nd time looking at NPC (After PicFrame)
                     else if (npcRecognizedTwice == false && npcRecognizedOnce && dialogueStarted && pictureFrameRecognizedOnce) {
+                        Debug.Log("Second time looking at NPC");
                         //display this dialogue, then wait for some time and display the next one again
-                        GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence(); //display next dialogue (in this case dialogue 1)
+                        dManage.DisplayNextSentence(); //display next dialogue (in this case dialogue 1)
                         //StartCoroutine(CountdownToStart()); //wait then display the next dialogue
                         npcRecognizedTwice = true;
                     }
@@ -99,11 +103,12 @@ public class LookingAtRecognition : MonoBehaviour
                 case "PictureFrame":
                     //2 - Looking at PictureFrame 1st time
                     if (pictureFrameRecognizedOnce == false && npcRecognizedOnce) { //didn't look at the pictureFrame before and the NPC was already recognized
-                        GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();//display next dialogue (in this case dialogue 1)
+                        Debug.Log("First PictureFrame Check");
+                        dManage.DisplayNextSentence();//display next dialogue (in this case dialogue 1)
                         pictureFrameRecognizedOnce = true;
                     } else //4 - Looking at PictureFrame 2nd time
                     if (pictureFrameRecognizedTwice == false && npcRecognizedTwice) { //looked at the picture then at the npc, she was crying and now he realised hes dead
-                        Debug.Log("second frame.");
+                        Debug.Log("Second PictureFrame Check");
                         StartCoroutine(CountdownToStart(waitForSeconds));//wait then display the next dialogue
                         //PLAY THE MEMORY 1 and then next dialogue
                         playMemory1();//fire this event so the VideoManager can play a video
@@ -115,11 +120,9 @@ public class LookingAtRecognition : MonoBehaviour
                     //7---------------------Look at the pen to make display dialogue -> then make the pen drop on the floor
                     if (canPenBeFound && wasAfterM1ConversationPlayed && !wasDialogue7Displayed)//after dialogue num 6
                     {
-                        //listen to event if the pen was dropped on the floor:
-                        //display next dialogue 7
-                        GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();
+                        Debug.Log("First time pen was dropped");
+                        dManage.DisplayNextSentence();
                         wasDialogue7Displayed = true;
-    
                         //Throw down the pen -> event...
                         //makeAllyFindFirstLetterPiece method below
                     }
@@ -139,6 +142,8 @@ public class LookingAtRecognition : MonoBehaviour
             StartCoroutine(CountdownToStart(10));//num 6
             canPenBeFound = true;//now go and find the pen
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
     }
 
 
@@ -157,7 +162,7 @@ public class LookingAtRecognition : MonoBehaviour
         Debug.Log("Waiting done.");
         
         //display another dialogue
-        GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();
+        dManage.DisplayNextSentence();
     }
 
     //-------------------------------------------------------------------------------------------------
