@@ -1,11 +1,6 @@
-﻿using System;//for events
+﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class LookingAtRecognition : MonoBehaviour
 {
@@ -26,16 +21,16 @@ public class LookingAtRecognition : MonoBehaviour
     private bool npcRecognizedOnce = false;//to show go to the 2nd dialogue and do it only once
     private bool npcRecognizedTwice = false;
     private bool pictureFrameRecognizedOnce = false;
-    private bool pictureFrameRecognizedTwice = false;
+    [SerializeField] private bool pictureFrameRecognizedTwice = false;
     //conversation after m1
-    private bool wasAfterM1ConversationPlayed = false;
-    private bool canAfterM1ConversationStart = false;
-    private bool canPenBeFound = false;//for after dialogue num6 find the pen (look at it)
+    [SerializeField] private bool wasAfterM1ConversationPlayed = false;
+    [SerializeField] private bool canAfterM1ConversationStart = false;
+    [SerializeField] private bool canPenBeFound = false;//for after dialogue num6 find the pen (look at it)
     private bool wasDialogue7Displayed = false;
 
     //events for playing videos
     public static event Action playMemory1;
-    public static event Action penInteractionStart;
+    public static event Action CanPlayMemory2;
 
     //events for audio
     public static event Action playAudioDoorKnob;
@@ -57,10 +52,11 @@ public class LookingAtRecognition : MonoBehaviour
     {
         //raycast to recognize objects
         Debug.DrawRay(transform.position, transform.forward * interactionDistance, Color.green);
-        if (Physics.Raycast(this.transform.position, transform.forward, out hitInfo, interactionDistance))
+        if (Physics.Raycast(this.transform.position, transform.forward, out hitInfo, interactionDistance, -1, QueryTriggerInteraction.Ignore))
         {
             //JESSE: for opening and closing curtain
             GameObject obj = hitInfo.collider.gameObject;
+            Debug.Log("Looking at tag: " + obj.tag);
 
             switch (obj.tag) {
                 case "InteractableCurtain":
@@ -126,6 +122,7 @@ public class LookingAtRecognition : MonoBehaviour
                         Debug.Log("First time pen was dropped");
                         dManage.DisplayNextSentence();
                         wasDialogue7Displayed = true;
+                        CanPlayMemory2();
                         //Throw down the pen -> event...
                         //makeAllyFindFirstLetterPiece method below
                     }

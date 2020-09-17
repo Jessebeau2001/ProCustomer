@@ -22,6 +22,8 @@ public class VideoManager : MonoBehaviour
     private bool wasM1StartedPlaying = false;
     private bool wasM2StartedPlaying = false;
 
+    private bool canPlayMem2 = false;
+
     //private bool wasM1DialogueDisplayedAgain = false; //JESSE: Commented this for now duo to warning CS0414
 
     private void Awake()
@@ -33,6 +35,8 @@ public class VideoManager : MonoBehaviour
         //M2
         TableFloorTrigger.playMemory2 += playM2;
         memory2.loopPointReached += CheckOverM2;
+        //Can Play Memory 2
+        LookingAtRecognition.CanPlayMemory2 += EnableMemory2;
     }
 
     private void OnDestroy()
@@ -44,10 +48,10 @@ public class VideoManager : MonoBehaviour
         //M2
         TableFloorTrigger.playMemory2 -= playM2;
         memory2.loopPointReached -= CheckOverM2;
+        LookingAtRecognition.CanPlayMemory2 -= EnableMemory2;
     }
-    void Update()
-    {
-        
+    private void EnableMemory2() {
+        canPlayMem2 = true;
     }
     //--------------------------------------------------------------------------------------
     //EVENTS to Display/Hide dialogue box when video is playing
@@ -71,6 +75,7 @@ public class VideoManager : MonoBehaviour
     //MEMORY 2---------------------------------------------------
     private void playM2()
     {
+        if (!canPlayMem2) return;
         if(wasM2StartedPlaying == false)
         {
             memory2.Play();
