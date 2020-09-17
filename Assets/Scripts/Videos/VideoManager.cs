@@ -47,6 +47,7 @@ public class VideoManager : MonoBehaviour
         LookingAtRecognition.playMemory2 += EnableMemory2;
         //M3
         memory3.loopPointReached += CheckOverM3;
+        PosterFloorTrigger.playMemory3 += playM3;
     }
 
     private void OnDestroy()
@@ -61,7 +62,7 @@ public class VideoManager : MonoBehaviour
         LookingAtRecognition.playMemory2 -= EnableMemory2;
         //M3
         memory3.loopPointReached -= CheckOverM3;
-        LookingAtRecognition.playMemory3 -= playM3;
+        PosterFloorTrigger.playMemory3 += playM3;
     }
     private void EnableMemory2() {
         canPlayMem2 = true;
@@ -109,7 +110,6 @@ public class VideoManager : MonoBehaviour
     {
         Debug.Log("VideoManager M3 - play");
 
-        if (!canPlayMem3) return;
         if (didM3StartPlaying == false)
         {   
             memory3.Play();//play the video
