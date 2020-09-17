@@ -22,11 +22,15 @@ public class LookingAtRecognition : MonoBehaviour
     private bool npcRecognizedTwice = false;
     private bool pictureFrameRecognizedOnce = false;
     [SerializeField] private bool pictureFrameRecognizedTwice = false;
-    //conversation after m1
+    //after memory 1
     [SerializeField] private bool wasAfterM1ConversationPlayed = false;
     [SerializeField] private bool canAfterM1ConversationStart = false;
     [SerializeField] private bool canPenBeFound = false;//for after dialogue num6 find the pen (look at it)
     private bool wasDialogue7Displayed = false;
+    //After memory 2
+    [SerializeField] private bool wasDialogue9Display = false;
+    [SerializeField] private bool canNowInteractLightCurtain = false;
+
 
     //events for playing videos
     public static event Action playMemory1;
@@ -42,11 +46,13 @@ public class LookingAtRecognition : MonoBehaviour
     {
         VideoManager.m1DonePlaying += afterM1ConversationCanStart;
         TableFloorTrigger.penOnFloor += makeAllyFindFirstLetterPiece;//make Ally walk to the table and find the first letter piece
+        VideoManager.m2DonePlaying += afterM2PlayedDialogues;//for dialogue num 9
     }
     private void OnDestroy()
     {
         VideoManager.m1DonePlaying -= afterM1ConversationCanStart;
         TableFloorTrigger.penOnFloor -= makeAllyFindFirstLetterPiece;
+        VideoManager.m2DonePlaying -= afterM2PlayedDialogues;//for dialogue num 9
     }
     void Update()
     {
@@ -168,11 +174,15 @@ public class LookingAtRecognition : MonoBehaviour
     //-------------------------------------------------------------------------------------------------
     //BASED ON EVENTS
     //-------------------------------------------------------------------------------------------------
+    //---------------------------------------------------------
+    //Displaying dialogues after M1 was played
     private void afterM1ConversationCanStart()
     {
         canAfterM1ConversationStart = true;
         Debug.Log("canAfterM1ConversationStart " + canAfterM1ConversationStart);
     }
+    //---------------------------------------------------------
+    //NPC walks to pen/table
     private void makeAllyFindFirstLetterPiece()
     {
         if (wasDialogue7Displayed)
@@ -181,6 +191,22 @@ public class LookingAtRecognition : MonoBehaviour
             GameObject.FindGameObjectWithTag("NPC").GetComponent<NPC>().SetDest(GameObject.FindGameObjectWithTag("Pen").transform.position);
             //display dialogue 8 once npc is there
             GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();
+        }
+    }
+    //---------------------------------------------------------
+    //Displaying dialogues after M2 was played
+    private void afterM2PlayedDialogues()
+    {
+        //9--------------------Ally foun the first letter piece
+        if (!wasDialogue9Display)
+        {
+            GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();
+            wasDialogue9Display = true;
+            
+            //10--------------------Specter replies to Ally about the second piece of the letter
+            StartCoroutine(CountdownToStart(waitForSeconds));//wait then display the next dialogue
+            //then you have to turn off the light + close curtain
+            canNowInteractLightCurtain = true;// maybe not needed -> discord check the conditions for 3rd memory
         }
     }
 }

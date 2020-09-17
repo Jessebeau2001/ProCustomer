@@ -17,6 +17,8 @@ TagManager:
   - PictureFrame
   - InteractableCurtain
   - LightSwitch
+  - Pen
+  - Poster
   layers:
   - Default
   - TransparentFX
