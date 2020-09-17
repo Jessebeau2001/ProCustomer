@@ -16,6 +16,7 @@ TagManager:
   - NightStand
   - PictureFrame
   - InteractableCurtain
+  - LightSwitch
   layers:
   - Default
   - TransparentFX
