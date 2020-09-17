@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public class NPC : MonoBehaviour
 {
-    public Camera cam;
+    // public Camera cam;
     public Transform textPrefab;
     public bool EnablePopup;
     public bool EnableMoveToClickedPos = true;
@@ -13,20 +13,20 @@ public class NPC : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0) && EnableMoveToClickedPos)
-        {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+    // void Update()
+    // {
+    //     if (Input.GetMouseButtonDown(0) && EnableMoveToClickedPos)
+    //     {
+    //         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+    //         RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit)) {
-                agent.SetDestination(hit.point);
-                if (EnablePopup)
-                    TextPopup("Testlalalalablublubruhriebruhma");//nice comment you got here :3
-            }
-        }
-    }
+    //         if (Physics.Raycast(ray, out hit)) {
+    //             agent.SetDestination(hit.point);
+    //             if (EnablePopup)
+    //                 TextPopup("Testlalalalablublubruhriebruhma");//nice comment you got here :3
+    //         }
+    //     }
+    // }
 
     private void TextPopup(string text) {
         var NewText = Instantiate(textPrefab, transform.position, Quaternion.identity);

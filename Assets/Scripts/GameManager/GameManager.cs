@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
     //Start of the game -> player cannot move
     public static event Action playerCanMove;//after you look at the NPC 2nd time
 
-
     //public getter-------------------------------------------------------------
     //singleton, we can access this game manager by this method
     //--------------------------------------------------------------------------

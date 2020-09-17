@@ -29,11 +29,12 @@ public class VideoManager : MonoBehaviour
     }
     private void playM1()
     {
-        if(isMemory1PLaying == false)
-        {
-            this.GetComponentInChildren<MeshRenderer>().enabled = true;//make the obejct visible
-            this.GetComponentInChildren<VideoPlayer>().Play();//play the video
-            isMemory1PLaying = true;
-        }
+        memory1.Play();
+        // if(isMemory1PLaying == false)
+        // {
+            // this.GetComponentInChildren<MeshRenderer>().enabled = true;//make the obejct visible
+            // this.GetComponentInChildren<VideoPlayer>().Play();//play the video
+            // isMemory1PLaying = true;
+        // }
     }
 }
