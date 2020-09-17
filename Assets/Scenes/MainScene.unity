@@ -1406,7 +1406,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1928179571, guid: 65a29c53f7421594db481713ef67d13f, type: 3}
       propertyPath: waitForSeconds
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8808025828027717025, guid: 65a29c53f7421594db481713ef67d13f,
         type: 3}
@@ -2348,6 +2348,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pen UV
+      objectReference: {fileID: 0}
+    - target: {fileID: 960382941343564338, guid: f727fd2bb472101429f515bd82f5d4dd,
+        type: 3}
+      propertyPath: m_TagString
+      value: Pen
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f727fd2bb472101429f515bd82f5d4dd, type: 3}
@@ -3517,7 +3522,7 @@ PrefabInstance:
     - target: {fileID: 435166872920252224, guid: 28102e06a152a6445af81194b591c762,
         type: 3}
       propertyPath: dialogue.sentences.Array.size
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 435166872920252224, guid: 28102e06a152a6445af81194b591c762,
         type: 3}
@@ -3545,58 +3550,48 @@ PrefabInstance:
     - target: {fileID: 435166872920252224, guid: 28102e06a152a6445af81194b591c762,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[5]
-      value: 'Ally:
-
-        How could you be so selfish?'
+      value: "Ally:\r How could you be so selfish?\r\nSpecter:\r Wait, no\u2026 that\u2019s
+        not\u2026\r\nAlly:\r Did you not love me?"
       objectReference: {fileID: 0}
     - target: {fileID: 435166872920252224, guid: 28102e06a152a6445af81194b591c762,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[6]
-      value: "Specter:\nWait, no\u2026 that\u2019s not\u2026"
+      value: "Specter:\nWait! A letter! I wrote you a letter. It\u2019s on the desk.
+        But I\u2026 I ruined it. how do I make her read this? "
       objectReference: {fileID: 0}
     - target: {fileID: 435166872920252224, guid: 28102e06a152a6445af81194b591c762,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[7]
-      value: 'Ally:
+      value: 'Specter:
 
-        Did you not love me?'
+        Here it is. I should throw the pen down the table
+        to hopefully make Ally come here.'
       objectReference: {fileID: 0}
     - target: {fileID: 435166872920252224, guid: 28102e06a152a6445af81194b591c762,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[8]
-      value: "Specter:\nWait! A letter! I wrote you a letter. It\u2019s on the desk.
-        It should still be there. But I\u2026 I ruined it. how do I make her read
-        this?"
+      value: 'Ally:
+
+        You always were so damn messy.
+
+        Wait, is that
+        for me?'
       objectReference: {fileID: 0}
     - target: {fileID: 435166872920252224, guid: 28102e06a152a6445af81194b591c762,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[9]
-      value: 'Ally:
-
-        You always were so damn messy.'
+      value: "Ally:\r\nSo, you wrote me a letter? But, where\u2019s the rest, this
+        is just a piece?"
       objectReference: {fileID: 0}
     - target: {fileID: 435166872920252224, guid: 28102e06a152a6445af81194b591c762,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[10]
-      value: 'Ally:
-
-        Is that for me?'
-      objectReference: {fileID: 0}
-    - target: {fileID: 435166872920252224, guid: 28102e06a152a6445af81194b591c762,
-        type: 3}
-      propertyPath: dialogue.sentences.Array.data[11]
-      value: "Ally:\nSo, you wrote me a letter? But, where\u2019s the rest, this
-        is just a piece..."
-      objectReference: {fileID: 0}
-    - target: {fileID: 435166872920252224, guid: 28102e06a152a6445af81194b591c762,
-        type: 3}
-      propertyPath: dialogue.sentences.Array.data[12]
       value: "Specter:\r\nThe rest? I think I know! That piece made me remember something.
         There has to be a connection, dark, some light and night sky\u2026"
       objectReference: {fileID: 0}
     - target: {fileID: 435166872920252224, guid: 28102e06a152a6445af81194b591c762,
         type: 3}
-      propertyPath: dialogue.sentences.Array.data[13]
+      propertyPath: dialogue.sentences.Array.data[11]
       value: 'Ally:
 
         Oh wow! Specter has always been fascinated by space.
@@ -3604,7 +3599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 435166872920252224, guid: 28102e06a152a6445af81194b591c762,
         type: 3}
-      propertyPath: dialogue.sentences.Array.data[14]
+      propertyPath: dialogue.sentences.Array.data[12]
       value: 'Ally:
 
         Why couldn''t you just be happy?
@@ -3614,11 +3609,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 435166872920252224, guid: 28102e06a152a6445af81194b591c762,
         type: 3}
-      propertyPath: dialogue.sentences.Array.data[15]
+      propertyPath: dialogue.sentences.Array.data[13]
       value: 'Specter:
 
         It''s not that simple. The letter will explain everything.
         Come on I know where to go next.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 435166872920252224, guid: 28102e06a152a6445af81194b591c762,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[14]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 435166872920252224, guid: 28102e06a152a6445af81194b591c762,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[15]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 435166872920252224, guid: 28102e06a152a6445af81194b591c762,
         type: 3}

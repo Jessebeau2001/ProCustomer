@@ -14,23 +14,35 @@ public class VideoManager : MonoBehaviour
     //to tell if the memories are playing or are done playing
     public static event Action m1Playing;
     public static event Action m1DonePlaying;
+    //memory 2
+    public static event Action m2Playing;
+    public static event Action m2DonePlaying;
 
     //for checking if a memory was played -> to hide/display the dialogue box
     private bool wasM1StartedPlaying = false;
-    private bool wasM1DialogueDisplayedAgain = false;
+    //memory 2
+    private bool wasM2StartedPlaying = false;
 
     private void Awake()
     {
         //subscribe
+        //M1
         LookingAtRecognition.playMemory1 += playM1;
         memory1.loopPointReached += CheckOverM1;
+        //M2
+        TableFloorTrigger.playMemory2 += playM2;
+        memory2.loopPointReached += CheckOverM2;
     }
 
     private void OnDestroy()
     {
         //Unsubscribing!
+        //M1
         LookingAtRecognition.playMemory1 -= playM1;
         memory1.loopPointReached -= CheckOverM1;
+        //M2
+        TableFloorTrigger.playMemory2 -= playM2;
+        memory2.loopPointReached -= CheckOverM2;
     }
     void Update()
     {
@@ -54,4 +66,23 @@ public class VideoManager : MonoBehaviour
     {
         m1DonePlaying();
     }
+    
+    //MEMORY 2---------------------------------------------------
+    private void playM2()
+    {
+        if(wasM2StartedPlaying == false)
+        {
+            memory2.Play();
+            wasM2StartedPlaying = true;
+
+            m2Playing();
+        }
+    }
+    //for showing the dialogue box again
+    private void CheckOverM2(UnityEngine.Video.VideoPlayer memory2)
+    {
+        m2DonePlaying();
+    }
+
+    //MEMORY 3---------------------------------------------------
 }
