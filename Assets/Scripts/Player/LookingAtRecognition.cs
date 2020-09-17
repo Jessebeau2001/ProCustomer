@@ -13,6 +13,7 @@ public class LookingAtRecognition : MonoBehaviour
     //This script starts the dialogue
     //Based on conditions and recognized objects it is telling the DialogueTrigger to show the next dialogue
 
+    #pragma warning disable CS0067
     public NPC npc;
     public DialogueManager dManage;
     public Transform nightStand;
@@ -40,6 +41,7 @@ public class LookingAtRecognition : MonoBehaviour
     public static event Action playAudioDoorKnob;
     public static event Action playAllyCry;
 
+    #pragma warning restore CS0067
 
     private void Awake()
     {
@@ -68,6 +70,7 @@ public class LookingAtRecognition : MonoBehaviour
                     break;
 
                 case "LightSwitch":
+                    ((Lightswitch) obj.GetComponent(typeof(Lightswitch))).showText = true;
                     if (Input.GetKeyDown(KeyCode.F))
                         ((Lightswitch) obj.GetComponent(typeof(Lightswitch))).SwapState();
                     break;
@@ -134,10 +137,10 @@ public class LookingAtRecognition : MonoBehaviour
         //5,6---------------------Memory 1 played now switch between dialogues
         if (pictureFrameRecognizedTwice && !wasAfterM1ConversationPlayed && canAfterM1ConversationStart)
         {
-            //Debug.Log("After m1 conversation");
+            Debug.Log("Attempting to run pen Code");
 
             StartCoroutine(CountdownToStart(waitForSeconds));//num 5
-            wasAfterM1ConversationPlayed = true;//
+            wasAfterM1ConversationPlayed = true;
 
             StartCoroutine(CountdownToStart(10));//num 6
             canPenBeFound = true;//now go and find the pen
