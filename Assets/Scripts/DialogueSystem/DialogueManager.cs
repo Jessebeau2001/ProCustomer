@@ -17,13 +17,21 @@ public class DialogueManager : MonoBehaviour
     //----------------------------------------------------------------------------------------
     private void Awake()
     {
+        //M1
         VideoManager.m1Playing += HideDialogue;
         VideoManager.m1DonePlaying += DisplayDialogue;
+        //M2
+        VideoManager.m2Playing += HideDialogue;
+        VideoManager.m2DonePlaying += DisplayDialogue;
     }
     private void OnDestroy()
     {
+        //M1
         VideoManager.m1Playing -= HideDialogue;
         VideoManager.m1DonePlaying -= DisplayDialogue;
+        //M2
+        VideoManager.m2Playing -= HideDialogue;
+        VideoManager.m2DonePlaying -= DisplayDialogue;
     }
 
 
