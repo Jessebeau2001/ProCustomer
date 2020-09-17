@@ -55,97 +55,75 @@ public class LookingAtRecognition : MonoBehaviour
         if (Physics.Raycast(this.transform.position, transform.forward, out hitInfo, interactionDistance))
         {
             //JESSE: for opening and closing curtain
-            if (hitInfo.collider.tag == "InteractableCurtain") {
-                ((Curtain) hitInfo.collider.gameObject.GetComponent(typeof(Curtain))).EnableText();
-                if (Input.GetKeyDown(KeyCode.F))
-                    ((Curtain) hitInfo.collider.gameObject.GetComponent(typeof(Curtain))).SwapState();
-            }
+            GameObject obj = hitInfo.collider.gameObject;
 
-            //---------------------------------------------------------------------------------------
-            //BLOOD
-            //---------------------------------------------------------------------------------------
-            if (hitInfo.collider.tag == "Blood")
-            {
-                //0---------------------Look at Blood, start the dialogue system
-                if (dialogueStarted == false)//to start the dialogue only once
-                {
-                    GameObject.FindGameObjectWithTag("DialogueTrigger").GetComponent<DialogueTrigger>().TriggerDialogue();//start the dialogue
+            switch (obj.tag) {
+                case "InteractableCurtain":
+                    ((Curtain) obj.GetComponent(typeof(Curtain))).EnableText();
+                    if (Input.GetKeyDown(KeyCode.F))
+                        ((Curtain) obj.GetComponent(typeof(Curtain))).SwapState();
+                    break;
 
-                    playAudioDoorKnob();//SOUND
+                case "LightSwitch":
+                    if (Input.GetKeyDown(KeyCode.F))
+                        ((Lightswitch) obj.GetComponent(typeof(Lightswitch))).SwapState();
+                    break;
 
-                    dialogueStarted = true;
-                }
-                
-            }
+                case "Blood":
+                    //Look at Blood, start the dialogue system
+                    if (dialogueStarted == false) { //to start the dialogue only once
+                        GameObject.FindGameObjectWithTag("DialogueTrigger").GetComponent<DialogueTrigger>().TriggerDialogue();//start the dialogue
+                        playAudioDoorKnob(); //SOUND
+                        dialogueStarted = true;
+                    }
+                    break;
 
-            //---------------------------------------------------------------------------------------
-            //NPC
-            //---------------------------------------------------------------------------------------
-            if (hitInfo.collider.tag == "NPC")
-            {
-                //1---------------------NPC looked at 1st time
-                if (npcRecognizedOnce == false && dialogueStarted && pictureFrameRecognizedOnce == false)
-                {
-                    GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();//display next dialogue (in this case dialogue 1)
-                    GameObject.FindGameObjectWithTag("NPC").GetComponent<NPC>().SetDest(GameObject.FindGameObjectWithTag("NightStand").transform.position);//set the destination of the NPC to the position of the night stand
+                case "NPC":
+                    //1st time looing at NPC
+                    if (npcRecognizedOnce == false && dialogueStarted && pictureFrameRecognizedOnce == false) {
+                        GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();//display next dialogue (in this case dialogue 1)
+                        GameObject.FindGameObjectWithTag("NPC").GetComponent<NPC>().SetDest(GameObject.FindGameObjectWithTag("NightStand").transform.position);//set the destination of the NPC to the position of the night stand
 
-                    playAllyCry();//SOUND
+                        playAllyCry();//SOUND
+                        npcRecognizedOnce = true;
+                    }
+                    //2nd time looking at NPC (After PicFrame)
+                    else if (npcRecognizedTwice == false && npcRecognizedOnce && dialogueStarted && pictureFrameRecognizedOnce) {
+                        //display this dialogue, then wait for some time and display the next one again
+                        GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence(); //display next dialogue (in this case dialogue 1)
+                        //StartCoroutine(CountdownToStart()); //wait then display the next dialogue
+                        npcRecognizedTwice = true;
+                    }
+                    break;
 
-                    npcRecognizedOnce = true;
-                }
-                //3---------------------NPC looked at 2nd time, after we looked at the pictureFrame
-                else if (npcRecognizedTwice == false && npcRecognizedOnce && dialogueStarted && pictureFrameRecognizedOnce)
-                {
-                    //display this dialogue, then wait for some time and display the next one again
-                    GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();//display next dialogue (in this case dialogue 1)
-                    //StartCoroutine(CountdownToStart());//wait then display the next dialogue
-
-                    npcRecognizedTwice = true;
-                }
-            }
-
-            //---------------------------------------------------------------------------------------
-            //PICTURE FRAME
-            //---------------------------------------------------------------------------------------
-            if (hitInfo.collider.tag == "PictureFrame")
-            {
-                //2---------------------Looking at PictureFrame 1st time
-                if (pictureFrameRecognizedOnce == false && npcRecognizedOnce)//didn't look at the pictureFrame before and the NPC was already recognized
-                {
-                    GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();//display next dialogue (in this case dialogue 1)
-
-                    pictureFrameRecognizedOnce = true;
-                }else
-                //4---------------------Looking at PictureFrame 2nd time
-                if (pictureFrameRecognizedTwice == false && npcRecognizedTwice)//looked at the picture then at the npc, she was crying and now he realised hes dead
-                {
-                    //Debug.Log("second frame.");
-                    //PLAY THE MEMORY 1 and then next dialogue
-                    playMemory1();//fire this event so the VideoManager can play a video
-
-                    StartCoroutine(CountdownToStart(waitForSeconds));//wait then display the next dialogue (number 4)
-                    pictureFrameRecognizedTwice = true;
-
-                    //"Specter:Ally.I remember you.” But… What ? ...Why can’t I touch the picture? And YOU don't see me? *pause* I’m not really here, am I? 
-                }
-            }
-
-            //---------------------------------------------------------------------------------------
-            //PEN
-            //---------------------------------------------------------------------------------------
-            if(hitInfo.collider.tag == "Pen")//you look at the pen
-            {
-                //7---------------------Look at the pen to make display dialogue -> then make the pen drop on the floor
-                if (canPenBeFound && wasAfterM1ConversationPlayed && !wasDialogue7Displayed)//after dialogue num 6
-                {
-                    //listen to event if the pen was dropped on the floor:
-                    //display next dialogue 7
-                    GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();
-                    wasDialogue7Displayed = true;
-
-                    //Throw down the pen -> event...
-                    //makeAllyFindFirstLetterPiece method below
-                }
+                case "PictureFrame":
+                    //2 - Looking at PictureFrame 1st time
+                    if (pictureFrameRecognizedOnce == false && npcRecognizedOnce) { //didn't look at the pictureFrame before and the NPC was already recognized
+                        GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();//display next dialogue (in this case dialogue 1)
+                        pictureFrameRecognizedOnce = true;
+                    } else //4 - Looking at PictureFrame 2nd time
+                    if (pictureFrameRecognizedTwice == false && npcRecognizedTwice) { //looked at the picture then at the npc, she was crying and now he realised hes dead
+                        Debug.Log("second frame.");
+                        StartCoroutine(CountdownToStart());//wait then display the next dialogue
+                        //PLAY THE MEMORY 1 and then next dialogue
+                        playMemory1();//fire this event so the VideoManager can play a video
+                        pictureFrameRecognizedTwice = true;
+                    }
+                    break;
+                    
+                case "Pen":
+                    //7---------------------Look at the pen to make display dialogue -> then make the pen drop on the floor
+                    if (canPenBeFound && wasAfterM1ConversationPlayed && !wasDialogue7Displayed)//after dialogue num 6
+                    {
+                        //listen to event if the pen was dropped on the floor:
+                        //display next dialogue 7
+                        GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();
+                        wasDialogue7Displayed = true;
+    
+                        //Throw down the pen -> event...
+                        //makeAllyFindFirstLetterPiece method below
+                    }
+                    break;
             }
         }
 

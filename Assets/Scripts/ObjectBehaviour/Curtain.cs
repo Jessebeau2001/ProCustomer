@@ -5,7 +5,7 @@ using TMPro;
 
 public class Curtain : MonoBehaviour
 {
-    public bool closed;
+    public bool isClosed;
     [SerializeField] string text;
     [SerializeField] Animator anim;
     [SerializeField] GameObject textMesh;
@@ -25,7 +25,16 @@ public class Curtain : MonoBehaviour
         if (anim.GetBool("IsClosed"))
             textMesh.GetComponent<TextMeshPro>().text = "Press 'F' to open";
         else
-            textMesh.GetComponent<TextMeshPro>().text = "Press 'F' to Close";
+            textMesh.GetComponent<TextMeshPro>().text = "Press 'F' to close";
+    }
+    public void SwapState() {
+        isClosed = !isClosed;
+        UpdateState();
+        UpdateString();
+    }
+
+    private void UpdateState() {
+        anim.SetBool("IsClosed", isClosed);
     }
 
     public void EnableText() {
@@ -36,8 +45,4 @@ public class Curtain : MonoBehaviour
         textMesh.SetActive(false);
     }
 
-    public void SwapState() {
-        anim.SetBool("IsClosed", !anim.GetBool("IsClosed"));
-        UpdateString();
-    }
 }
