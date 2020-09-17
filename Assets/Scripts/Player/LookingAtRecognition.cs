@@ -48,6 +48,9 @@ public class LookingAtRecognition : MonoBehaviour
                 if(dialogueStarted == false)//to start the dialogue only once
                 {
                     GameObject.FindGameObjectWithTag("DialogueTrigger").GetComponent<DialogueTrigger>().TriggerDialogue();//start the dialogue
+                    
+                    //SOUND--------------------------------------------------
+                    
                     dialogueStarted = true;
                 }
                 
@@ -60,7 +63,8 @@ public class LookingAtRecognition : MonoBehaviour
                 {
                     GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();//display next dialogue (in this case dialogue 1)
                     GameObject.FindGameObjectWithTag("NPC").GetComponent<NPC>().SetDest(GameObject.FindGameObjectWithTag("NightStand").transform.position);//set the destination of the NPC to the position of the night stand
-                    //MAKE NPC CRY SOUND
+
+                    //SOUND--------------------------------------------------
 
                     npcRecognizedOnce = true;
                 }
