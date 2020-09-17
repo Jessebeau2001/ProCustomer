@@ -56,7 +56,7 @@ public class LookingAtRecognition : MonoBehaviour
         {
             //JESSE: for opening and closing curtain
             GameObject obj = hitInfo.collider.gameObject;
-            Debug.Log("Looking at tag: " + obj.tag);
+            //Debug.Log("Looking at tag: " + obj.tag);
 
             switch (obj.tag) {
                 case "InteractableCurtain":

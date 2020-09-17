@@ -10,6 +10,7 @@ public class Lightswitch : MonoBehaviour
     public Light lightSource;
     [SerializeField] Animator anim;
     [SerializeField] GameObject TextMesh;
+    public DialogueManager dManage;
 
     void Start() {
         anim = GetComponent<Animator>();
@@ -30,5 +31,6 @@ public class Lightswitch : MonoBehaviour
     public void UpdateState() {
         lightSource.enabled = IsOn;
         anim.SetBool("IsOn", IsOn);
+        dManage.lightsOut = !IsOn;
     }
 }

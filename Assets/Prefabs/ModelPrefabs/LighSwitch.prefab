@@ -153,6 +153,7 @@ MonoBehaviour:
   lightSource: {fileID: 0}
   anim: {fileID: 0}
   TextMesh: {fileID: 0}
+  dManage: {fileID: 0}
 --- !u!65 &2143204475945513583
 BoxCollider:
   m_ObjectHideFlags: 0
