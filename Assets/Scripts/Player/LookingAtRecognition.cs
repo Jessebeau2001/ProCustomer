@@ -37,11 +37,11 @@ public class LookingAtRecognition : MonoBehaviour
         Debug.DrawRay(transform.position, transform.forward * interactionDistance, Color.green);
         if (Physics.Raycast(this.transform.position, transform.forward, out hitInfo, interactionDistance))
         {
-            //Debug.Log("Collider = " +hitInfo.collider.tag);
-            //for dialogue
-            //1
-            if (hitInfo.collider.tag == "InteractableCurtain" && Input.GetKeyDown(KeyCode.F)) {
-                ((Curtain) hitInfo.collider.gameObject.GetComponent(typeof(Curtain))).SwapState();
+            //JESSE: for opening and closing curtain
+            if (hitInfo.collider.tag == "InteractableCurtain") {
+                ((Curtain) hitInfo.collider.gameObject.GetComponent(typeof(Curtain))).EnableText();
+                if (Input.GetKeyDown(KeyCode.F))
+                    ((Curtain) hitInfo.collider.gameObject.GetComponent(typeof(Curtain))).SwapState();
             }
 
             //---------------------------------------------------------------------------------------

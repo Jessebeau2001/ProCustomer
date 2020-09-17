@@ -17,7 +17,7 @@ public class VideoManager : MonoBehaviour
 
     //for checking if a memory was played -> to hide/display the dialogue box
     private bool wasM1StartedPlaying = false;
-    private bool wasM1DialogueDisplayedAgain = false;
+    //private bool wasM1DialogueDisplayedAgain = false; //JESSE: Commented this for now duo to warning CS0414
 
     private void Awake()
     {
