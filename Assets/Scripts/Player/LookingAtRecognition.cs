@@ -104,7 +104,7 @@ public class LookingAtRecognition : MonoBehaviour
                     } else //4 - Looking at PictureFrame 2nd time
                     if (pictureFrameRecognizedTwice == false && npcRecognizedTwice) { //looked at the picture then at the npc, she was crying and now he realised hes dead
                         Debug.Log("second frame.");
-                        StartCoroutine(CountdownToStart());//wait then display the next dialogue
+                        StartCoroutine(CountdownToStart(waitForSeconds));//wait then display the next dialogue
                         //PLAY THE MEMORY 1 and then next dialogue
                         playMemory1();//fire this event so the VideoManager can play a video
                         pictureFrameRecognizedTwice = true;
