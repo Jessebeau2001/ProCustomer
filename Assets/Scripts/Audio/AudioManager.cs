@@ -8,9 +8,11 @@ public class AudioManager : MonoBehaviour
     public AudioSource gameMusic;
     public AudioSource doorKnob;
     public AudioSource allyCry;
+    public AudioSource menuMusic;
 
     //checking if music is already playing
     private bool isGameMusicPlaying = false;
+    private bool isMenuMusicPlaying = false;
 
     //public getter-------------------------------------------------------------
     //singleton, we can access this game manager by this method
@@ -62,6 +64,20 @@ public class AudioManager : MonoBehaviour
             {
                 gameMusic.Play();
                 isGameMusicPlaying = true;
+            }
+
+            if (isMenuMusicPlaying)
+            {
+                menuMusic.Stop();//just in case make menuMusic stop playing
+            }
+        }
+        //Menu music-----------------------------------------
+        if (SceneManager.GetActiveScene().name == "Menu")
+        {
+            if (!isMenuMusicPlaying)
+            {
+                menuMusic.Play();
+                isMenuMusicPlaying = true;
             }
         }
     }
