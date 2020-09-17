@@ -151,7 +151,8 @@ public class LookingAtRecognition : MonoBehaviour
         {
             Debug.Log("Attempting to run pen Code");
             //dialogue num 5
-            GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();
+            dManage.DisplayNextSentence();
+            //GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();
 
             wasAfterM1ConversationPlayed = true;
 
@@ -204,7 +205,8 @@ public class LookingAtRecognition : MonoBehaviour
             Debug.Log("Dialogue 11");
 
             //11--------------------Memory 3 was played
-            GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();
+            dManage.DisplayNextSentence();
+            //GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();
             StartCoroutine(CountdownToStart(waitForSeconds, false));
             //make NPC walk to poster
             GameObject.FindGameObjectWithTag("NPC").GetComponent<NPC>().SetDest(GameObject.FindGameObjectWithTag("Poster").transform.position);
@@ -236,7 +238,8 @@ public class LookingAtRecognition : MonoBehaviour
             //8--------------------Make the Npc walk to the table and find the first letter piece
             GameObject.FindGameObjectWithTag("NPC").GetComponent<NPC>().SetDest(GameObject.FindGameObjectWithTag("Pen").transform.position);
             //display dialogue 8 once npc is there
-            GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();
+            dManage.DisplayNextSentence();
+            //GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();
         }
     }
     //---------------------------------------------------------
@@ -246,7 +249,8 @@ public class LookingAtRecognition : MonoBehaviour
         //9--------------------Ally foun the first letter piece
         if (!wasDialogue9Display)
         {
-            GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();
+            dManage.DisplayNextSentence();
+            //GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();
             wasDialogue9Display = true;
             
             //10--------------------Specter replies to Ally about the second piece of the letter
