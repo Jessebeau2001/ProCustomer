@@ -16,6 +16,9 @@ public class LookingAtRecognition : MonoBehaviour
     public NPC npc;
     public DialogueManager dManage;
     public Transform nightStand;
+    public Transform pen;
+    public Transform poster;
+    public DialogueTrigger DTrigger;
 
     RaycastHit hitInfo;
     public float interactionDistance = 300f;
@@ -89,7 +92,7 @@ public class LookingAtRecognition : MonoBehaviour
                 case "Blood":
                     //Look at Blood, start the dialogue system
                     if (_dialogueStarted == false) { //to start the dialogue only once
-                        GameObject.FindGameObjectWithTag("DialogueTrigger").GetComponent<DialogueTrigger>().TriggerDialogue();//start the dialogue
+                        DTrigger.TriggerDialogue();//start the dialogue
                         playAudioDoorKnob(); //SOUND
                         _dialogueStarted = true;
                     }
@@ -152,7 +155,7 @@ public class LookingAtRecognition : MonoBehaviour
             Debug.Log("Attempting to run pen Code");
             //dialogue num 5
             dManage.DisplayNextSentence();
-            //GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();
+            //("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();
 
             wasAfterM1ConversationPlayed = true;
 
@@ -206,10 +209,10 @@ public class LookingAtRecognition : MonoBehaviour
 
             //11--------------------Memory 3 was played
             dManage.DisplayNextSentence();
-            //GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();
+            //("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();
             StartCoroutine(CountdownToStart(waitForSeconds, false));
             //make NPC walk to poster
-            GameObject.FindGameObjectWithTag("NPC").GetComponent<NPC>().SetDest(GameObject.FindGameObjectWithTag("Poster").transform.position);
+            npc.SetDest(poster.position);
             StartCoroutine(CountdownToStart(waitForSeconds, false));
 
             //OBJECT TRIGGER TO TELL VIDEOmanager TO PLAY M3
@@ -236,10 +239,10 @@ public class LookingAtRecognition : MonoBehaviour
         if (wasDialogue7Displayed)
         {
             //8--------------------Make the Npc walk to the table and find the first letter piece
-            GameObject.FindGameObjectWithTag("NPC").GetComponent<NPC>().SetDest(GameObject.FindGameObjectWithTag("Pen").transform.position);
+            npc.SetDest(pen.position);
             //display dialogue 8 once npc is there
             dManage.DisplayNextSentence();
-            //GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();
+            //("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();
         }
     }
     //---------------------------------------------------------
@@ -250,7 +253,7 @@ public class LookingAtRecognition : MonoBehaviour
         if (!wasDialogue9Display)
         {
             dManage.DisplayNextSentence();
-            //GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();
+            //("DialogueManager").GetComponent<DialogueManager>().DisplayNextSentence();
             wasDialogue9Display = true;
             
             //10--------------------Specter replies to Ally about the second piece of the letter
