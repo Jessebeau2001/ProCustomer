@@ -1042,7 +1042,7 @@ VideoPlayer:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 0.25
-  m_Url: 
+  m_Url: http://www.dikkel.nl/alty/videoSource/alty_mem_2.mp4
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 01
   m_ControlledAudioTrackCount: 1
@@ -1806,6 +1806,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 994151446}
   m_Mesh: {fileID: -5076798556035486163, guid: 116ff75cf696b98408874e786094354d, type: 3}
+--- !u!1 &995068875 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 35076912245234555, guid: 819ba31c523c1254dbb4c82730b9fb00,
+    type: 3}
+  m_PrefabInstance: {fileID: 4889566245362173372}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1009484309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1943,7 +1949,7 @@ VideoPlayer:
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: _MainTex
   m_RenderMode: 1
-  m_AspectRatio: 2
+  m_AspectRatio: 3
   m_DataSource: 0
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
@@ -1951,7 +1957,7 @@ VideoPlayer:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 0.19
-  m_Url: 
+  m_Url: http://www.dikkel.nl/alty/vidsrc/alty_mem_1.mp4
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
@@ -3915,7 +3921,7 @@ VideoPlayer:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 0.25
-  m_Url: 
+  m_Url: http://www.dikkel.nl/alty/videoSource/alty_mem_3.mp4
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 01
   m_ControlledAudioTrackCount: 1
@@ -4226,9 +4232,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 299014715, guid: bf13d56928194c94ba4281f75c241341, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 299014716, guid: bf13d56928194c94ba4281f75c241341, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080772997, guid: bf13d56928194c94ba4281f75c241341, type: 3}
+      propertyPath: m_DataSource
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080772997, guid: bf13d56928194c94ba4281f75c241341, type: 3}
+      propertyPath: m_Url
+      value: https://www.youtube.com/watch?v=z1BxLFtY84I&feature=youtu.be
       objectReference: {fileID: 0}
     - target: {fileID: 3227056443068512002, guid: bf13d56928194c94ba4281f75c241341,
         type: 3}
@@ -4549,6 +4567,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1714902146}
     m_Modifications:
+    - target: {fileID: 3916137464768404691, guid: 819ba31c523c1254dbb4c82730b9fb00,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3916137464768404691, guid: 819ba31c523c1254dbb4c82730b9fb00,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 3.66
+      objectReference: {fileID: 0}
     - target: {fileID: 4631287079549311827, guid: 819ba31c523c1254dbb4c82730b9fb00,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4654,6 +4682,21 @@ PrefabInstance:
       propertyPath: dManage
       value: 
       objectReference: {fileID: 914154997}
+    - target: {fileID: 7861063769724474756, guid: 819ba31c523c1254dbb4c82730b9fb00,
+        type: 3}
+      propertyPath: textMesh
+      value: 
+      objectReference: {fileID: 995068875}
+    - target: {fileID: 7861063769724474756, guid: 819ba31c523c1254dbb4c82730b9fb00,
+        type: 3}
+      propertyPath: enableText
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861063769724474756, guid: 819ba31c523c1254dbb4c82730b9fb00,
+        type: 3}
+      propertyPath: text
+      value: Press 'F' to open
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 819ba31c523c1254dbb4c82730b9fb00, type: 3}
 --- !u!1001 &4938402816595872734
@@ -4757,6 +4800,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1714902146}
     m_Modifications:
+    - target: {fileID: 346101000, guid: 8e696fa00470c5a4f926bd7e35db6add, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 994151447, guid: 8e696fa00470c5a4f926bd7e35db6add, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1664818999439562415, guid: 8e696fa00470c5a4f926bd7e35db6add,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -4815,7 +4866,7 @@ PrefabInstance:
     - target: {fileID: 1664818999439562415, guid: 8e696fa00470c5a4f926bd7e35db6add,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.3026
+      value: -4.3895
       objectReference: {fileID: 0}
     - target: {fileID: 1664818999439562415, guid: 8e696fa00470c5a4f926bd7e35db6add,
         type: 3}
